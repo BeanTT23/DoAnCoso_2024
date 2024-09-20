@@ -1,43 +1,42 @@
-package com.g16.handbagstore.service.impl;
+package com.lapstore.service.impl;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 
-import com.g16.handbagstore.entity.BagCategory;
-import com.g16.handbagstore.service.BagCategoryService;
+import com.lapstore.entity.LapCategory;
+import com.lapstore.service.LapCategoryService;
+import com.lapstore.repository.LapCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.g16.handbagstore.repository.BagCategoryRepository;
-
 @Service
-public class BagCategoryServiceImpl implements BagCategoryService {
+public class BagCategoryServiceImpl implements LapCategoryService {
 
 	@Autowired
 	private BagServiceImpl bagServiceImpl;
 	
 	@Autowired
-	private BagCategoryRepository bagCategoryRepo;
+	private LapCategoryRepository bagCategoryRepo;
 
 	@Override
-	public List<BagCategory> getAllBagCategories() {
+	public List<LapCategory> getAllBagCategories() {
 		return bagCategoryRepo.findAll();
 	}
 
 	@Override
-	public BagCategory getBagCategoryByID(int bagCategoryID) {
+	public LapCategory getBagCategoryByID(int bagCategoryID) {
 		return bagCategoryRepo.findById(bagCategoryID).get();
 	}
 
 	@Override
-	public List<BagCategory> getBagCategoriesByName(String name) {
+	public List<LapCategory> getBagCategoriesByName(String name) {
 		return bagCategoryRepo.getBagCategoriesByName(name);
 	}
 
 	@Override
-	public List<BagCategory> getBagCategoriesByImportDate(LocalDate importDate) {
+	public List<LapCategory> getBagCategoriesByImportDate(LocalDate importDate) {
 		return bagCategoryRepo.getBagCategoriesByImportDate(importDate);
 	}
 
@@ -47,23 +46,23 @@ public class BagCategoryServiceImpl implements BagCategoryService {
 //	}
 
 	@Override
-	public List<BagCategory> getBagCategoriesLikeName(String name) {
+	public List<LapCategory> getBagCategoriesLikeName(String name) {
 		return bagCategoryRepo.getBagCategoriesLikeName("%" + name + "%");
 	}
 
 	@Override
-	public List<BagCategory> getBagCategoriesOrderByNameFromA2Z() {
+	public List<LapCategory> getBagCategoriesOrderByNameFromA2Z() {
 		return bagCategoryRepo.getBagCategoriesOrderByNameFromA2Z();
 	}
 
 	@Override
-	public List<BagCategory> getBagCategoriesOrderByNameFromZ2A() {
+	public List<LapCategory> getBagCategoriesOrderByNameFromZ2A() {
 		return bagCategoryRepo.getBagCategoriesOrderByNameFromZ2A();
 	}
 
 	@Override
-	public List<BagCategory> getBagCategoriesOrderByPriceAsc() {
-		List<BagCategory> bagCategories = new ArrayList<>();
+	public List<LapCategory> getBagCategoriesOrderByPriceAsc() {
+		List<LapCategory> bagCategories = new ArrayList<>();
 		
 		LinkedHashSet<Integer> cateIdList = bagServiceImpl.getBagCategoryIdOrderByPriceAsc();
 		
@@ -75,8 +74,8 @@ public class BagCategoryServiceImpl implements BagCategoryService {
 	}
 
 	@Override
-	public List<BagCategory> getBagCategoriesOrderByPriceDesc() {
-		List<BagCategory> bagCategories = new ArrayList<>();
+	public List<LapCategory> getBagCategoriesOrderByPriceDesc() {
+		List<LapCategory> bagCategories = new ArrayList<>();
 		
 		LinkedHashSet <Integer> cateIdList = bagServiceImpl.getBagCategoryIdOrderByPriceDesc();
 		
@@ -88,17 +87,17 @@ public class BagCategoryServiceImpl implements BagCategoryService {
 	}
 
 	@Override
-	public List<BagCategory> getBagCategoriesByNewestDate() {
+	public List<LapCategory> getBagCategoriesByNewestDate() {
 		return bagCategoryRepo.getBagCategoriesByNewestDate();
 	}
 
 	@Override
-	public void addOrUpdateBagCategory(BagCategory bagCategory) {
+	public void addOrUpdateBagCategory(LapCategory bagCategory) {
 		bagCategoryRepo.save(bagCategory);
   }
     
   @Override
-	public List<BagCategory> searchBagCaterogyALikeByKeyword(String keyword) {
+	public List<LapCategory> searchBagCaterogyALikeByKeyword(String keyword) {
 		return bagCategoryRepo.searchBagCaterogyALikeByKeyword("%" + keyword + "%");
 	}
 }

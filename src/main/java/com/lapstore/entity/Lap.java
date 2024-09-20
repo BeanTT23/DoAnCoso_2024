@@ -1,4 +1,4 @@
-package com.g16.handbagstore.entity;
+package com.lapstore.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -15,8 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "bags")
-public class Bag implements Serializable {
+@Table(name = "laps")
+public class Lap implements Serializable {
 	/**
 	 * 
 	 */
@@ -24,10 +24,10 @@ public class Bag implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "bag_id")
-	private int bagId;
+	private int lapId;
 	@ManyToOne
-	@JoinColumn(name = "bag_category_id", nullable = false)
-	private BagCategory bagCategory;
+	@JoinColumn(name = "lap_category_id", nullable = false)
+	private LapCategory lapCategory;
 	@Column(name = "color", columnDefinition = "nvarchar(80)", nullable = false)
 	private String color;
 	@Column(name = "price", columnDefinition = "money", nullable = false)
@@ -35,50 +35,50 @@ public class Bag implements Serializable {
 	@Column(name = "quantity", columnDefinition = "int", nullable = false)
 	private int quantity;
 
-	@OneToMany(mappedBy = "bag")
+	@OneToMany(mappedBy = "lap")
 	private List<SaleOrderDetail> listSaleOrderDetails;
 
-	@OneToMany(mappedBy = "bag")
-	private List<BagImage> listBagImages;
+	@OneToMany(mappedBy = "lap")
+	private List<LapImage> listlapImages;
 
-	@OneToMany(mappedBy = "bag")
-	private List<BagReview> listBagReviews;
+	@OneToMany(mappedBy = "lap")
+	private List<lapReview> listlapReviews;
 
-	public Bag(int bagId, BagCategory bagCategory, String color, BigDecimal price, int quantity) {
+	public Lap(int lapId, lapCategory lapCategory, String color, BigDecimal price, int quantity) {
 		super();
-		this.bagId = bagId;
-		this.bagCategory = bagCategory;
+		this.lapId = lapId;
+		this.lapCategory = lapCategory;
 		this.color = color;
 		this.price = price;
 		this.quantity = quantity;
 	}
 
-	public Bag(BagCategory bagCategory, String color, BigDecimal price, int quantity) {
+	public Lap(lapCategory lapCategory, String color, BigDecimal price, int quantity) {
 		super();
-		this.bagCategory = bagCategory;
+		this.lapCategory = lapCategory;
 		this.color = color;
 		this.price = price;
 		this.quantity = quantity;
 	}
 
-	public Bag() {
+	public Lap() {
 		super();
 	}
 
-	public int getBagId() {
-		return bagId;
+	public int getlapId() {
+		return lapId;
 	}
 
-	public void setBagId(int bagId) {
-		this.bagId = bagId;
+	public void setlapId(int lapId) {
+		this.lapId = lapId;
 	}
 
-	public BagCategory getBagCategory() {
-		return bagCategory;
+	public lapCategory getlapCategory() {
+		return lapCategory;
 	}
 
-	public void setBagCategory(BagCategory bagCategory) {
-		this.bagCategory = bagCategory;
+	public void setlapCategory(lapCategory lapCategory) {
+		this.lapCategory = lapCategory;
 	}
 
 	public String getColor() {
@@ -107,7 +107,7 @@ public class Bag implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Bag [bagId=" + bagId + ", bagCategory=" + bagCategory + ", color=" + color + ", price=" + price
+		return "lap [lapId=" + lapId + ", lapCategory=" + lapCategory + ", color=" + color + ", price=" + price
 				+ ", quantity=" + quantity + "]";
 	}
 }

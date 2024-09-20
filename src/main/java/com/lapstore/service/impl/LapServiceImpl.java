@@ -1,4 +1,4 @@
-package com.g16.handbagstore.service.impl;
+package com.lapstore.service.impl;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
@@ -6,27 +6,26 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 
-import com.g16.handbagstore.entity.Bag;
-import com.g16.handbagstore.entity.BagCategory;
-import com.g16.handbagstore.service.BagService;
+import com.lapstore.entity.Lap;
+import com.lapstore.entity.LapCategory;
+import com.lapstore.service.LapService;
+import com.lapstore.repository.LapRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.g16.handbagstore.repository.BagRepository;
-
 @Service
-public class BagServiceImpl implements BagService {
+public class BagServiceImpl implements LapService {
 
 	@Autowired
-	private BagRepository bagRepo;
+	private LapRepository bagRepo;
 	
 	@Override
-	public List<Bag> getAllBags() {
+	public List<Lap> getAllBags() {
 		return bagRepo.findAll();
 	}
 
 	@Override
-	public Bag getBagByID(int bagID) {
+	public Lap getBagByID(int bagID) {
 		return bagRepo.findById(bagID).get();
 	}
 
@@ -36,7 +35,7 @@ public class BagServiceImpl implements BagService {
 	}
 
 	@Override
-	public List<Bag> getBagListOfBagCategory(int bagCategoryId) {
+	public List<Lap> getBagListOfBagCategory(int bagCategoryId) {
 		return bagRepo.findBagsListByBagCategoryId(bagCategoryId);
 	}
 
@@ -46,12 +45,12 @@ public class BagServiceImpl implements BagService {
 	}
 
 	@Override
-	public List<String> listPrice(List<BagCategory> listBagCategory) {
+	public List<String> listPrice(List<LapCategory> listBagCategory) {
 		List<String> listPrice = new ArrayList<>();
 		
 		listBagCategory.forEach(bagCate -> {
 			listPrice.add(new DecimalFormat("#,###")
-					.format(getBagPriceByCateID(bagCate.getBagCategoryId())));
+					.format(getBagPriceByCateID(bagCate.getLapCategoryId())));
 		});
 		
 		return listPrice;

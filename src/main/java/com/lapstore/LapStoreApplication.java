@@ -1,4 +1,4 @@
-package com.g16.handbagstore;
+package com.lapstore;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

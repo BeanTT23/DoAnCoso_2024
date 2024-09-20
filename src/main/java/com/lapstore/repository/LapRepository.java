@@ -1,4 +1,4 @@
-package com.g16.handbagstore.repository;
+package com.lapstore.repository;
 
 import java.math.BigDecimal;
 import java.util.LinkedHashSet;
