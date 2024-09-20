@@ -1,9 +1,9 @@
-package com.g16.handbagstore.controller;
+package com.lapstore.controller;
 
-import com.g16.handbagstore.entity.CartHeader;
-import com.g16.handbagstore.entity.User;
-import com.g16.handbagstore.service.CartHeaderService;
-import com.g16.handbagstore.service.impl.UserServiceImpl;
+import com.lapstore.entity.CartHeader;
+import com.lapstore.entity.User;
+import com.lapstore.service.CartHeaderService;
+import com.lapstore.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

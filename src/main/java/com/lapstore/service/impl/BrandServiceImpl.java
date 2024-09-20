@@ -1,14 +1,13 @@
-package com.g16.handbagstore.service.impl;
+package com.lapstore.service.impl;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.g16.handbagstore.entity.Brand;
+import com.lapstore.entity.Brand;
+import com.lapstore.repository.BrandRepository;
+import com.lapstore.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.g16.handbagstore.repository.BrandRepository;
-import com.g16.handbagstore.service.BrandService;
 
 @Service
 public class BrandServiceImpl implements BrandService {

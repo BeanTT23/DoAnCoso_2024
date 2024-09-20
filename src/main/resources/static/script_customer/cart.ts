@@ -30,14 +30,14 @@
 	btnPlus.forEach(btn => {
 		btn.addEventListener('click', (e) => {
 
-			let bagId = btn.parentElement.parentElement.parentElement.firstElementChild as HTMLInputElement
+			let lapId = btn.parentElement.parentElement.parentElement.firstElementChild as HTMLInputElement
 			let userId = btn.parentElement.parentElement.parentElement.firstElementChild.nextElementSibling as HTMLInputElement
 			let orderQuantity = btn.previousElementSibling as HTMLSpanElement
 
 			let quantity = parseInt(orderQuantity.innerText) + 1
 
 			fetch(
-				`http://localhost:8080/api_cart/update?bagID=${bagId.value}&userID=${userId.value}&quantity=${quantity}`, {
+				`http://localhost:8080/api_cart/update?lapID=${lapId.value}&userID=${userId.value}&quantity=${quantity}`, {
 				method: 'PUT'
 			})
 				.then(resp => resp.text())
@@ -50,7 +50,7 @@
 	btnMinus.forEach(btn => {
 		btn.addEventListener('click', (e) => {
 
-			let bagId = btn.parentElement.parentElement.parentElement.firstElementChild as HTMLInputElement
+			let lapId = btn.parentElement.parentElement.parentElement.firstElementChild as HTMLInputElement
 			let userId = btn.parentElement.parentElement.parentElement.firstElementChild.nextElementSibling as HTMLInputElement
 			let orderQuantity = btn.nextElementSibling as HTMLSpanElement
 
@@ -61,7 +61,7 @@
 			quantity -= 1
 
 			fetch(
-				`http://localhost:8080/api_cart/update?bagID=${bagId.value}&userID=${userId.value}&quantity=${quantity}`, {
+				`http://localhost:8080/api_cart/update?lapID=${lapId.value}&userID=${userId.value}&quantity=${quantity}`, {
 				method: 'PUT'
 			})
 				.then(resp => resp.text())
@@ -73,11 +73,11 @@
 
 	btnDelete.forEach(btn => {
 		btn.addEventListener('click', (e) => {
-			let bagId = btn.parentElement.parentElement.firstElementChild as HTMLInputElement
+			let lapId = btn.parentElement.parentElement.firstElementChild as HTMLInputElement
 			let userId = btn.parentElement.parentElement.firstElementChild.nextElementSibling as HTMLInputElement
 
 			fetch(
-				`http://localhost:8080/api_cart/delete?bagID=${bagId.value}&userID=${userId.value}`, {
+				`http://localhost:8080/api_cart/delete?lapID=${lapId.value}&userID=${userId.value}`, {
 				method: 'DELETE'
 			})
 				.then(resp => resp.text())

@@ -52,21 +52,21 @@
         </tr>
           <th:block th:each="orderDetail: ${orderDetailList}">
               <tr class="items-list-item">
-                  <input type="hidden" class="item-id" th:value="${orderDetail.bag.bagId}">
+                  <input type="hidden" class="item-id" th:value="${orderDetail.lap.lapId}">
                   <input type="hidden" class="cart-header-id" th:value="${orderDetail.saleOrder.customer.customerId}">
                   <td class="item-image-wrapper">
                       <figure class="item-image">
-                          <img th:src="'data:image/png;base64,' + ${orderDetail.bag.bagCategory.coverPhoto}" alt="">
+                          <img th:src="'data:image/png;base64,' + ${orderDetail.lap.lapCategory.coverPhoto}" alt="">
                       </figure>
                   </td>
                   <td class="item-name">
-                      <a th:href="@{/products/product/{categoryId}(categoryId=${orderDetail.bag.bagCategory.bagCategoryId})}" class="item-link" th:text="${orderDetail.bag.bagCategory.name}"></a>
+                      <a th:href="@{/products/product/{categoryId}(categoryId=${orderDetail.lap.lapCategory.lapCategoryId})}" class="item-link" th:text="${orderDetail.lap.lapCategory.name}"></a>
                   </td>
                   <td class="item-color">
-                      <span th:text="${orderDetail.bag.color}"></span>
+                      <span th:text="${orderDetail.lap.color}"></span>
                   </td>
                   <td class="item-unitPrice">
-                                <span th:text="${@priceConvert.chuyenMoney(orderDetail.bag.price)}"></span>
+                                <span th:text="${@priceConvert.chuyenMoney(orderDetail.lap.price)}"></span>
                       <span>
                                     &#8363
                                 </span>
@@ -75,7 +75,7 @@
                       <span th:text="${orderDetail.orderQty}"></span>
                   </td>
                   <td class="item-totalPrice">
-                                <span th:text="${@priceConvert.chuyenMoney(orderDetail.orderQty * orderDetail.bag.price)}"></span>
+                                <span th:text="${@priceConvert.chuyenMoney(orderDetail.orderQty * orderDetail.lap.price)}"></span>
                       <span>
                                     &#8363
                                 </span>

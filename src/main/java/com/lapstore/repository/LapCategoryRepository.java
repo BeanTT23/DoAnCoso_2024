@@ -8,29 +8,29 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-public interface BagCategoryRepository extends JpaRepository<LapCategory, Integer>{
+public interface LapCategoryRepository extends JpaRepository<LapCategory, Integer>{
 	@Query("from LapCategory where name = :name")
-	List<LapCategory> getBagCategoriesByName(@Param("name") String name);
+	List<LapCategory> getLapCategoriesByName(@Param("name") String name);
 	
 	@Query("from LapCategory where name like :name")
-	List<LapCategory> getBagCategoriesLikeName(@Param("name") String name);
+	List<LapCategory> getLapCategoriesLikeName(@Param("name") String name);
 	
 	@Query("from LapCategory where import_date = :importDate")
-	List<LapCategory> getBagCategoriesByImportDate(@Param("importDate") LocalDate importDate);
+	List<LapCategory> getLapCategoriesByImportDate(@Param("importDate") LocalDate importDate);
 	
 	@Query(value = "from LapCategory order by name asc")
-	List<LapCategory> getBagCategoriesOrderByNameFromA2Z();
+	List<LapCategory> getLapCategoriesOrderByNameFromA2Z();
 	
 	@Query(value = "from LapCategory order by name desc")
-	List<LapCategory> getBagCategoriesOrderByNameFromZ2A();
+	List<LapCategory> getLapCategoriesOrderByNameFromZ2A();
 	
 	@Query(value = "from LapCategory order by import_date desc")
-	List<LapCategory> getBagCategoriesByNewestDate();
+	List<LapCategory> getLapCategoriesByNewestDate();
 
-	@Query(value = "select top 5 * from bag_categories where "
-			+ "name like :keyword or bag_category_id like :keyword", nativeQuery = true)
-	List<LapCategory> searchBagCaterogyALikeByKeyword(@Param("keyword") String keyword);
+	@Query(value = "select top 5 * from lap_categories where "
+			+ "name like :keyword or lap_category_id like :keyword", nativeQuery = true)
+	List<LapCategory> searchLapCaterogyALikeByKeyword(@Param("keyword") String keyword);
  
-//	@Query("select min(Bag.price) from BagCategory join Bag on BagCategory.bagCategoryId = Bag.bagCategory.bagCategoryId")
-//	double getMinPriceOfBagCategory(@Param("bagCategoryId") int bagCategoryId);
+//	@Query("select min(Lap.price) from LapCategory join Lap on LapCategory.lapCategoryId = Lap.lapCategory.lapCategoryId")
+//	double getMinPriceOfLapCategory(@Param("lapCategoryId") int lapCategoryId);
 }

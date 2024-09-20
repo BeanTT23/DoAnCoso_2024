@@ -101,44 +101,36 @@ function renderAllDevInfoToHtml(devArr: Developer[]): string{
     let dev1 = new Developer(
         '../imgs/aboutus_demo_cover_photo.jpg',
         true,
-        'Nguyễn Dương Minh Huy',
-        '19481471',
-        'DHKTMPM15A',
-        'minhhuy123nguyen@gmail.com',
-        'https://github.com/s1mple-n'
+        'Trần ** *** Quốc',
+        '********',
+        '********',
+        '***',
+        '****'
         )
 
     let dev2 = new Developer(
         '../imgs/aboutus_demo_cover_photo.jpg',
         false,
-        'Nguyễn Văn Phát',
-        '19483821 ',
-        'DHKTPM15A ',
-        'nguyenvanphat911@gmail.com',
-        'https://github.com/Phatjiro'
+        '*',
+        '* ',
+        '* ',
+        '*',
+        '*'
         )
 
     let dev3 = new Developer(
         '../imgs/aboutus_demo_cover_photo.jpg',
         false,
-        'Cao A Minh',
-        '19533901',
-        'DHKTMPM15A',
-        'caoaminh12an1nh2019@gmail.com',
-        'https://github.com/CaoAMinh'
+        '*',
+        '*',
+        '*',
+        '(*)',
+        '*'
         )
 
-    let dev4 = new Developer(
-        '../imgs/aboutus_demo_cover_photo.jpg',
-        false,
-        'Hoàng Thị Tố Thùy',
-        '19432541 ',
-        'DHKTPM15A',
-        'hoangtothuy01@gmail.com ',
-        'https://github.com/ThuyHoang-01'
-        )
+
     
-    let devArr: Developer[] = new Array(dev1, dev2, dev3, dev4)
+    let devArr: Developer[] = new Array(dev1, dev2, dev3)
 
     const mainWrapper = document.querySelector('.main__wrapper')
 

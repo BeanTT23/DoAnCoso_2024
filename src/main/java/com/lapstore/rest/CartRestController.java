@@ -1,5 +1,7 @@
-package com.g16.handbagstore.rest;
+package com.lapstore.rest;
 
+import com.lapstore.entity.CartDetail;
+import com.lapstore.entity.Lap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -7,11 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.g16.handbagstore.entity.Bag;
-import com.g16.handbagstore.entity.CartDetail;
-import com.g16.handbagstore.service.impl.BagServiceImpl;
-import com.g16.handbagstore.service.impl.CartDetailServiceImpl;
-import com.g16.handbagstore.service.impl.CartHeaderServiceImpl;
+
+import com.lapstore.service.impl.LapServiceImpl;
+import com.lapstore.service.impl.CartDetailServiceImpl;
+import com.lapstore.service.impl.CartHeaderServiceImpl;
 
 @RestController
 @RequestMapping("/api_cart")
@@ -24,20 +25,20 @@ public class CartRestController {
 	private CartHeaderServiceImpl cartHeaderServiceImpl;
 
 	@Autowired
-	private BagServiceImpl bagServiceImpl;
+	private LapServiceImpl lapServiceImpl;
 
 	@PutMapping("/update")
 	public String changeCartOrderQuantity(
-			@RequestParam int bagID, @RequestParam int userID, @RequestParam int quantity
+			@RequestParam int lapID, @RequestParam int userID, @RequestParam int quantity
 	) {
 
-		Bag bag = bagServiceImpl.getBagByID(bagID);
-		int quantityInStock = bag.getQuantity() - quantity;
+		Lap lap = lapServiceImpl.getLapByID(lapID);
+		int quantityInStock = lap.getQuantity() - quantity;
 //		Order quantity cant greater than quantity in stock
 		if (quantityInStock < 0) return "failed";
 
-		CartDetail cartDetail = cartDetailServiceImpl.getCartDetailByCartHeaderIdAndBagId(userID, bagID);
-		cartDetail.setBagQty(quantity);
+		CartDetail cartDetail = cartDetailServiceImpl.getCartDetailByCartHeaderIdAndLapId(userID, lapID);
+		cartDetail.setLapQty(quantity);
 
 		cartDetailServiceImpl.addOrUpdateCartDetail(cartDetail);
 
@@ -48,9 +49,9 @@ public class CartRestController {
 	}
 
 	@DeleteMapping("/delete")
-	public String deleteCartOrderItem(@RequestParam int bagID, @RequestParam int userID) {
+	public String deleteCartOrderItem(@RequestParam int lapID, @RequestParam int userID) {
 		
-		cartDetailServiceImpl.deleteCartDetailByCartHeaderIdAndBagId(userID, bagID);
+		cartDetailServiceImpl.deleteCartDetailByCartHeaderIdAndLapId(userID, lapID);
 		
 		cartHeaderServiceImpl.updateCartTotalPriceAndQuantity(userID,
 				cartDetailServiceImpl.getCartDetailsByCartHeaderID(userID));

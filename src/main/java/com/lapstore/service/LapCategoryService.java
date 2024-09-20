@@ -5,17 +5,17 @@ import java.util.List;
 
 import com.lapstore.entity.LapCategory;
 
-public interface BagCategoryService {
-	List<LapCategory> getAllBagCategories();
-	LapCategory getBagCategoryByID(int bagCategoryID);
-	void addOrUpdateBagCategory(LapCategory bagCategory);
-	List<LapCategory> getBagCategoriesByName(String name);
-	List<LapCategory> getBagCategoriesLikeName(String name);
-	List<LapCategory> getBagCategoriesByImportDate(LocalDate importDate);
-	List<LapCategory> getBagCategoriesOrderByNameFromA2Z();
-	List<LapCategory> getBagCategoriesOrderByNameFromZ2A();
-	List<LapCategory> getBagCategoriesOrderByPriceAsc();
-	List<LapCategory> getBagCategoriesOrderByPriceDesc();
-	List<LapCategory> getBagCategoriesByNewestDate();
-	List<LapCategory> searchBagCaterogyALikeByKeyword(String keyword);
+public interface LapCategoryService {
+	List<LapCategory> getAllLapCategories();
+	LapCategory getLapCategoryByID(int lapCategoryID);
+	void addOrUpdateLapCategory(LapCategory lapCategory);
+	List<LapCategory> getLapCategoriesByName(String name);
+	List<LapCategory> getLapCategoriesLikeName(String name);
+	List<LapCategory> getLapCategoriesByImportDate(LocalDate importDate);
+	List<LapCategory> getLapCategoriesOrderByNameFromA2Z();
+	List<LapCategory> getLapCategoriesOrderByNameFromZ2A();
+	List<LapCategory> getLapCategoriesOrderByPriceAsc();
+	List<LapCategory> getLapCategoriesOrderByPriceDesc();
+	List<LapCategory> getLapCategoriesByNewestDate();
+	List<LapCategory> searchLapCaterogyALikeByKeyword(String keyword);
 }

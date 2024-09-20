@@ -52,21 +52,21 @@
         </tr>
           <th:block th:each="cartDetail: ${cartDetailList}">
               <tr class="items-list-item">
-                  <input type="hidden" class="item-id" th:value="${cartDetail.bag.bagId}">
+                  <input type="hidden" class="item-id" th:value="${cartDetail.lap.lapId}">
                   <input type="hidden" class="cart-header-id" th:value="${cartDetail.cartHeader.customer.customerId}">
                   <td class="item-image-wrapper">
                       <figure class="item-image">
-                          <img th:src="'data:image/png;base64,' + ${cartDetail.bag.bagCategory.coverPhoto}" alt="">
+                          <img th:src="'data:image/png;base64,' + ${cartDetail.lap.lapCategory.coverPhoto}" alt="">
                       </figure>
                   </td>
                   <td class="item-name">
-                      <a th:href="@{/products/product/{categoryId}(categoryId=${cartDetail.bag.bagCategory.bagCategoryId})}" class="item-link" th:text="${cartDetail.bag.bagCategory.name}"></a>
+                      <a th:href="@{/products/product/{categoryId}(categoryId=${cartDetail.lap.lapCategory.lapCategoryId})}" class="item-link" th:text="${cartDetail.lap.lapCategory.name}"></a>
                   </td>
                   <td class="item-color">
-                      <span th:text="${cartDetail.bag.color}"></span>
+                      <span th:text="${cartDetail.lap.color}"></span>
                   </td>
                   <td class="item-unitPrice">
-                                <span th:text="${@priceConvert.chuyenMoney(cartDetail.bag.price)}"></span>
+                                <span th:text="${@priceConvert.chuyenMoney(cartDetail.lap.price)}"></span>
                       <span>
                                     &#8363
                                 </span>
@@ -78,7 +78,7 @@
                                   <path d="M5 11h14v2H5z"></path>
                               </svg>
                           </button>
-                          <span class="item-quantity" th:text="${cartDetail.bagQty}"></span>
+                          <span class="item-quantity" th:text="${cartDetail.lapQty}"></span>
                           <button class="item-quantity-btn quantity-add">
                               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: rgba(0, 0, 0, 1);">
                                   <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
@@ -87,7 +87,7 @@
                       </div>
                   </td>
                   <td class="item-totalPrice">
-                                <span th:text="${@priceConvert.chuyenMoney(cartDetail.bagQty * cartDetail.bag.price)}"></span>
+                                <span th:text="${@priceConvert.chuyenMoney(cartDetail.lapQty * cartDetail.lap.price)}"></span>
                       <span>
                                     &#8363
                                 </span>

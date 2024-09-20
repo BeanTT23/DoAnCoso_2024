@@ -1,4 +1,4 @@
-package com.g16.handbagstore.controller;
+package com.lapstore.controller;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.lapstore.service.CartHeaderService;
+import com.lapstore.service.SaleOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,16 +16,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.g16.handbagstore.entity.CartDetail;
-import com.g16.handbagstore.entity.CartHeader;
-import com.g16.handbagstore.entity.SaleOrder;
-import com.g16.handbagstore.entity.SaleOrderDetail;
-import com.g16.handbagstore.entity.User;
-import com.g16.handbagstore.service.CartDetailService;
-import com.g16.handbagstore.service.CartHeaderService;
-import com.g16.handbagstore.service.SaleOrderDetailService;
-import com.g16.handbagstore.service.SaleOrderService;
-import com.g16.handbagstore.service.UserService;
+import com.lapstore.entity.CartDetail;
+import com.lapstore.entity.CartHeader;
+import com.lapstore.entity.SaleOrder;
+import com.lapstore.entity.SaleOrderDetail;
+import com.lapstore.entity.User;
+import com.lapstore.service.CartDetailService;
+import com.lapstore.service.SaleOrderDetailService;
+import com.lapstore.service.UserService;
 
 @Controller
 @RequestMapping("/checkout")
@@ -102,8 +102,8 @@ public class CheckoutController {
         
         List<SaleOrderDetail> saleOrderDetails = new ArrayList<SaleOrderDetail>();
         for (CartDetail c : cartDetailList) {
-        	SaleOrderDetail s = new SaleOrderDetail(saleOrder, c.getBag(), c.getBagQty(), c.getBag().getPrice(), 
-        			c.getBag().getPrice().multiply(new BigDecimal(c.getBagQty())));
+        	SaleOrderDetail s = new SaleOrderDetail(saleOrder, c.getLap(), c.getLapQty(), c.getLap().getPrice(),
+        			c.getLap().getPrice().multiply(new BigDecimal(c.getLapQty())));
 			saleOrderDetails.add(s);
 			saleOrderDetailService.addOrUpdateSaleOrderDetail(s);
 		}

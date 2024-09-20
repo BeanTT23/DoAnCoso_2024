@@ -1,17 +1,17 @@
-package com.g16.handbagstore.rest;
+package com.lapstore.rest;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.lapstore.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.g16.handbagstore.entity.User;
-import com.g16.handbagstore.service.impl.UserServiceImpl;
-import com.g16.handbagstore.ultility.MyUltility;
+import com.lapstore.service.impl.UserServiceImpl;
+import com.lapstore.ultility.MyUltility;
 
 @RestController
 @RequestMapping("/api_customer_admin")

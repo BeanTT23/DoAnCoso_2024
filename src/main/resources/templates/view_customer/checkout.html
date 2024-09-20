@@ -206,12 +206,12 @@
                         <th:block th:each="cartDetail: ${cartDetailList}">
                             <tr class="bottom-list-item">
                                 <td class="bottom-name py-3">
-                                    <a th:href="@{/products/product/{categoryId}(categoryId=${cartDetail.bag.bagId})}" class="bottom-link"
-                                    th:text="${cartDetail.bag.bagCategory.name}"></a>
+                                    <a th:href="@{/products/product/{categoryId}(categoryId=${cartDetail.lap.lapId})}" class="bottom-link"
+                                    th:text="${cartDetail.lap.lapCategory.name}"></a>
                                 </td>
-                                <td class="bottom-quantity" th:text="${cartDetail.bagQty}"></td>
+                                <td class="bottom-quantity" th:text="${cartDetail.lapQty}"></td>
                                 <td class="item-totalPrice">
-                                    <span th:text="${@priceConvert.chuyenMoney(cartDetail.bagQty * cartDetail.bag.price)}"></span>
+                                    <span th:text="${@priceConvert.chuyenMoney(cartDetail.lapQty * cartDetail.lap.price)}"></span>
                                     <span>
                                         &#8363
                                     </span>

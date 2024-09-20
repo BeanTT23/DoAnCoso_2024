@@ -4,9 +4,9 @@ import java.util.List;
 
 import com.lapstore.entity.LapReview;
 
-public interface BagReviewService {
-	List<LapReview> getAllBagReview();
-	List<LapReview> getBagReviewsByBagID(int bagID);
-	LapReview getBagReviewByID(int bagReviewID);
-	void addOrUpdateBagReview(LapReview bagReview);
+public interface LapReviewService {
+	List<LapReview> getAllLapReview();
+	List<LapReview> getLapReviewsByLapID(int lapID);
+	LapReview getLapReviewByID(int lapReviewID);
+	void addOrUpdateLapReview(LapReview lapReview);
 }

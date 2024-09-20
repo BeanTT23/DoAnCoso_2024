@@ -1,4 +1,4 @@
-package com.g16.handbagstore.controller;
+package com.lapstore.controller;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -7,11 +7,16 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
-import com.g16.handbagstore.entity.Bag;
-import com.g16.handbagstore.entity.BagCategory;
-import com.g16.handbagstore.entity.BagImage;
-import com.g16.handbagstore.entity.Brand;
-import com.g16.handbagstore.service.impl.BagCategoryServiceImpl;
+
+import com.lapstore.entity.Lap;
+import com.lapstore.entity.LapCategory;
+import com.lapstore.entity.LapImage;
+import com.lapstore.entity.Brand;
+import com.lapstore.service.impl.LapCategoryServiceImpl;
+import com.lapstore.service.LapCategoryService;
+import com.lapstore.service.LapImageService;
+import com.lapstore.service.LapService;
+import com.lapstore.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,11 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.g16.handbagstore.service.BagCategoryService;
-import com.g16.handbagstore.service.BagImageService;
-import com.g16.handbagstore.service.BagService;
-import com.g16.handbagstore.service.BrandService;
-import com.g16.handbagstore.service.UserService;
+import com.lapstore.service.UserService;
 
 @Controller
 @RequestMapping("/admin/products")
@@ -36,23 +37,23 @@ public class AdminProductController {
     @Autowired
     private BrandService brandService;
     @Autowired
-    private BagCategoryService bagCategoryService;
+    private LapCategoryService lapCategoryService;
     @Autowired
-    private BagService bagService;
+    private LapService lapService;
     @Autowired
-    private BagImageService bagImageService;
+    private LapImageService lapImageService;
     
     @Autowired
-    private BagCategoryServiceImpl bagCategoryServiceImpl;
+    private LapCategoryServiceImpl lapCategoryServiceImpl;
 
     @GetMapping("/all")
     public String showProductsManagersPage(Model model){
 
         UserSession.getLoggedUserInfo(userService, model);
-        List<BagCategory> bagCategorieList = bagCategoryService.getAllBagCategories();
-        model.addAttribute("listProducts", bagCategorieList);
+        List<LapCategory> lapCategorieList = lapCategoryService.getAllLapCategories();
+        model.addAttribute("listProducts", lapCategorieList);
         model.addAttribute("pageTitle", "G16 - Quản lí sản phẩm");
-        addBagCateAmount(model, bagCategoryServiceImpl.getAllBagCategories());
+        addLapCateAmount(model, lapCategoryServiceImpl.getAllLapCategories());
         return "/view_admin/products_manager";
     }
     @PostMapping("/save")
@@ -72,41 +73,41 @@ public class AdminProductController {
     	Brand brand = new Brand(brandName);
     	brandService.addOrUpdateBrand(brand);
     	String imageDataString = Base64.getEncoder().encodeToString(coverPhoto.getBytes());
-    	BagCategory bagCategory = new BagCategory(brand, categoryName, size, Integer.parseInt(weight), 
+    	LapCategory lapCategory = new LapCategory(brand, categoryName, size, Integer.parseInt(weight),
     			imageDataString, shortDescription, longDescription, LocalDate.now());
-    	bagCategoryService.addOrUpdateBagCategory(bagCategory);
-    	Bag bag = new Bag(bagCategory, color, new BigDecimal(Double.parseDouble(price)), Integer.parseInt(quantity));
-    	bagService.addOrUpdateBag(bag);
+    	lapCategoryService.addOrUpdateLapCategory(lapCategory);
+    	Lap lap = new Lap(lapCategory, color, new BigDecimal(Double.parseDouble(price)), Integer.parseInt(quantity));
+    	lapService.addOrUpdateLap(lap);
     	for (MultipartFile m : listImage) {
     		String imageString = Base64.getEncoder().encodeToString(m.getBytes());
-			BagImage bagImage = new BagImage(bag, imageString);
-			bagImageService.addOrUpdateBagImage(bagImage);
+			LapImage lapImage = new LapImage(lap, imageString);
+			lapImageService.addOrUpdateLapImage(lapImage);
 		}
     	
         UserSession.getLoggedUserInfo(userService, model);
         model.addAttribute("pageTitle", "G16 - Quản lí sản phẩm");
-        List<BagCategory> bagCategorieList = bagCategoryService.getAllBagCategories();
-        model.addAttribute("listProducts", bagCategorieList);
+        List<LapCategory> lapCategorieList = lapCategoryService.getAllLapCategories();
+        model.addAttribute("listProducts", lapCategorieList);
         
-        List<BagCategory> bagCategories = bagCategoryServiceImpl.getAllBagCategories();
+        List<LapCategory> lapCategories = lapCategoryServiceImpl.getAllLapCategories();
         
-        model.addAttribute("bagCates", bagCategories);
+        model.addAttribute("lapCates", lapCategories);
         
         return "/view_admin/products_manager";
     }
     
-    private void addBagCateAmount(Model model, List<BagCategory> bagCategories) {
+    private void addLapCateAmount(Model model, List<LapCategory> lapCategories) {
     	 
-		List<Integer> bagCateAmount = new ArrayList<>();
+		List<Integer> lapCateAmount = new ArrayList<>();
 		
-		bagCateAmount.add(bagCategories.size());
-		bagCateAmount.add(bagService.sumQuantity());
-		bagCateAmount.add(bagService.countBag());
-		bagCateAmount.add(bagService.countBagNotInStock());
+		lapCateAmount.add(lapCategories.size());
+		lapCateAmount.add(lapService.sumQuantity());
+		lapCateAmount.add(lapService.countLap());
+		lapCateAmount.add(lapService.countLapNotInStock());
 
-		model.addAttribute("bagCateTotalCate", bagCateAmount.get(0));
-		model.addAttribute("bagCateTotal", bagCateAmount.get(1));
-		model.addAttribute("bagCateInStock", bagCateAmount.get(2));
-		model.addAttribute("bagCateOutOfStock", bagCateAmount.get(3)); 
+		model.addAttribute("lapCateTotalCate", lapCateAmount.get(0));
+		model.addAttribute("lapCateTotal", lapCateAmount.get(1));
+		model.addAttribute("lapCateInStock", lapCateAmount.get(2));
+		model.addAttribute("lapCateOutOfStock", lapCateAmount.get(3));
 	}
 }

@@ -1,14 +1,13 @@
-package com.g16.handbagstore.service.impl;
+package com.lapstore.service.impl;
 
 import java.util.List;
 
-import com.g16.handbagstore.entity.User;
-import com.g16.handbagstore.service.UserService;
+import com.lapstore.entity.User;
+import com.lapstore.service.UserService;
+import com.lapstore.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import com.g16.handbagstore.repository.UserRepository;
 
 @Service
 public class UserServiceImpl implements UserService {

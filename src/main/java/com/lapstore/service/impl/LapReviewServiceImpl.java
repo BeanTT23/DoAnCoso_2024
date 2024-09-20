@@ -10,36 +10,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BagReviewServiceImpl implements LapReviewService {
+public class LapReviewServiceImpl implements LapReviewService {
 
 	@Autowired
-	private LapReviewRepository bagReviewRepo;
+	private LapReviewRepository lapReviewRepo;
 	
 	@Override
-	public List<LapReview> getAllBagReview() {
-		return bagReviewRepo.findAll();
+	public List<LapReview> getAllLapReview() {
+		return lapReviewRepo.findAll();
 	}
 
 	@Override
-	public List<LapReview> getBagReviewsByBagID(int bagID) {
-		return bagReviewRepo.getBagReviewsByBagID(bagID);
+	public List<LapReview> getLapReviewsByLapID(int lapID) {
+		return lapReviewRepo.getLapReviewsByLapID(lapID);
 	}
 
 	@Override
-	public LapReview getBagReviewByID(int bagReviewID) {
-		Optional<LapReview> result = bagReviewRepo.findById(bagReviewID);
-		LapReview bagReview = null;
+	public LapReview getLapReviewByID(int lapReviewID) {
+		Optional<LapReview> result = lapReviewRepo.findById(lapReviewID);
+		LapReview lapReview = null;
 		if(result.isPresent()) {
-			bagReview = result.get();
+			lapReview = result.get();
 		} else {
-			throw new RuntimeException("Did not find bag review id - " + bagReviewID);
+			throw new RuntimeException("Did not find lap review id - " + lapReviewID);
 		}
-		return bagReview;
+		return lapReview;
 	}
 
 	@Override
-	public void addOrUpdateBagReview(LapReview bagReview) {
-		bagReviewRepo.save(bagReview);
+	public void addOrUpdateLapReview(LapReview lapReview) {
+		lapReviewRepo.save(lapReview);
 	}
 
 }

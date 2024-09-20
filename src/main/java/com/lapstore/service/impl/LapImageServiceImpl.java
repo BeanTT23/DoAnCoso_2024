@@ -10,35 +10,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BagImageServiceImpl implements LapImageService {
+public class LapImageServiceImpl implements LapImageService {
 
 	@Autowired
-	private LapImageRepository bagImageRepo;
+	private LapImageRepository lapImageRepo;
 	
 	@Override
-	public List<LapImage> getAllBagImages() {
-		return bagImageRepo.findAll();
+	public List<LapImage> getAllLapImages() {
+		return lapImageRepo.findAll();
 	}
 
 	@Override
-	public List<LapImage> getBagImagesByBagID(int bagID) {
-		return bagImageRepo.getBagImagesByBagID(bagID);
+	public List<LapImage> getLapImagesByLapID(int lapID) {
+		return lapImageRepo.getLapImagesByLapID(lapID);
 	}
 
 	@Override
-	public LapImage getBagImageByID(int bagImageID) {
-		Optional<LapImage> result = bagImageRepo.findById(bagImageID);
-		LapImage bagImage = null;
+	public LapImage getLapImageByID(int lapImageID) {
+		Optional<LapImage> result = lapImageRepo.findById(lapImageID);
+		LapImage lapImage = null;
 		if(result.isPresent()) {
-			bagImage = result.get();
+			lapImage = result.get();
 		} else {
-			throw new RuntimeException("Did not find bag image id - " + bagImageID);
+			throw new RuntimeException("Did not find lap image id - " + lapImageID);
 		}
-		return bagImage;
+		return lapImage;
 	}
 
 	@Override
-	public void addOrUpdateBagImage(LapImage bagImage) {
-		bagImageRepo.save(bagImage);
+	public void addOrUpdateLapImage(LapImage lapImage) {
+		lapImageRepo.save(lapImage);
 	}
 }

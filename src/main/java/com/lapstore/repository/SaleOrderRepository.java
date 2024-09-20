@@ -1,8 +1,8 @@
-package com.g16.handbagstore.repository;
+package com.lapstore.repository;
 
 import java.util.List;
 
-import com.g16.handbagstore.entity.SaleOrder;
+import com.lapstore.entity.SaleOrder;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

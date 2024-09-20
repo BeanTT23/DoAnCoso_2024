@@ -14,70 +14,70 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BagServiceImpl implements LapService {
+public class LapServiceImpl implements LapService {
 
 	@Autowired
-	private LapRepository bagRepo;
+	private LapRepository lapRepo;
 	
 	@Override
-	public List<Lap> getAllBags() {
-		return bagRepo.findAll();
+	public List<Lap> getAllLaps() {
+		return lapRepo.findAll();
 	}
 
 	@Override
-	public Lap getBagByID(int bagID) {
-		return bagRepo.findById(bagID).get();
+	public Lap getLapByID(int lapID) {
+		return lapRepo.findById(lapID).get();
 	}
 
 	@Override
-	public void addOrUpdateBag(Bag bag) {
-		bagRepo.save(bag);
+	public void addOrUpdateLap(Lap lap) {
+		lapRepo.save(lap);
 	}
 
 	@Override
-	public List<Lap> getBagListOfBagCategory(int bagCategoryId) {
-		return bagRepo.findBagsListByBagCategoryId(bagCategoryId);
+	public List<Lap> getLapListOfLapCategory(int lapCategoryId) {
+		return lapRepo.findLapsListByLapCategoryId(lapCategoryId);
 	}
 
 	@Override
-	public BigDecimal getBagPriceByCateID(int cateID) {
-		return bagRepo.getBagPriceByCateID(cateID);
+	public BigDecimal getLapPriceByCateID(int cateID) {
+		return lapRepo.getLapPriceByCateID(cateID);
 	}
 
 	@Override
-	public List<String> listPrice(List<LapCategory> listBagCategory) {
+	public List<String> listPrice(List<LapCategory> listLapCategory) {
 		List<String> listPrice = new ArrayList<>();
 		
-		listBagCategory.forEach(bagCate -> {
+		listLapCategory.forEach(lapCate -> {
 			listPrice.add(new DecimalFormat("#,###")
-					.format(getBagPriceByCateID(bagCate.getLapCategoryId())));
+					.format(getLapPriceByCateID(lapCate.getLapCategoryId())));
 		});
 		
 		return listPrice;
 	}
 
 	@Override
-	public LinkedHashSet<Integer> getBagCategoryIdOrderByPriceAsc() {
-		return bagRepo.getBagCategoryIdOrderByPriceAsc();
+	public LinkedHashSet<Integer> getLapCategoryIdOrderByPriceAsc() {
+		return lapRepo.getLapCategoryIdOrderByPriceAsc();
 	}
 
 	@Override
-	public LinkedHashSet<Integer> getBagCategoryIdOrderByPriceDesc() {
-		return bagRepo.getBagCategoryIdOrderByPriceDesc();
+	public LinkedHashSet<Integer> getLapCategoryIdOrderByPriceDesc() {
+		return lapRepo.getLapCategoryIdOrderByPriceDesc();
 	}
 
 	@Override
-	public int countBag() {
-		return bagRepo.countBag();
+	public int countLap() {
+		return lapRepo.countLap();
 	}
 
 	@Override
 	public int sumQuantity() {
-		return bagRepo.sumQuantity();
+		return lapRepo.sumQuantity();
 	}
 
 	@Override
-	public int countBagNotInStock() {
-		return bagRepo.countBagNotInStock();
+	public int countLapNotInStock() {
+		return lapRepo.countLapNotInStock();
 	}
 }

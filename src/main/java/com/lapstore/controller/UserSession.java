@@ -1,8 +1,8 @@
-package com.g16.handbagstore.controller;
+package com.lapstore.controller;
 
-import com.g16.handbagstore.config.MyUserDetail;
-import com.g16.handbagstore.entity.User;
-import com.g16.handbagstore.service.UserService;
+import com.lapstore.config.MyUserDetail;
+import com.lapstore.entity.User;
+import com.lapstore.service.UserService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 

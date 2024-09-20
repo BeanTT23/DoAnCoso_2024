@@ -1,4 +1,4 @@
-package com.g16.handbagstore.entity;
+package com.lapstore.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -15,16 +15,16 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "bag_categories")
-public class BagCategory implements Serializable {
+@Table(name = "lap_categories")
+public class LapCategory implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "bag_category_id")
-	private int bagCategoryId;
+	@Column(name = "lap_category_id")
+	private int lapCategoryId;
 	@ManyToOne
 	@JoinColumn(name = "brand_id", nullable = false)
 	private Brand brand;
@@ -43,13 +43,13 @@ public class BagCategory implements Serializable {
 	@Column(name = "import_date", columnDefinition = "date", nullable = false)
 	private LocalDate importDate;
 
-	@OneToMany(mappedBy = "bagCategory")
-	private List<Bag> listBags;
+	@OneToMany(mappedBy = "lapCategory")
+	private List<Lap> listLaps;
 
-	public BagCategory(int bagCategoryId, Brand brand, String name, String size, double weight, String coverPhoto,
-			String shortDescription, String longDescription, LocalDate importDate) {
+	public LapCategory(int lapCategoryId, Brand brand, String name, String size, double weight, String coverPhoto,
+					   String shortDescription, String longDescription, LocalDate importDate) {
 		super();
-		this.bagCategoryId = bagCategoryId;
+		this.lapCategoryId = lapCategoryId;
 		this.brand = brand;
 		this.name = name;
 		this.size = size;
@@ -60,8 +60,8 @@ public class BagCategory implements Serializable {
 		this.importDate = importDate;
 	}
 
-	public BagCategory(Brand brand, String name, String size, double weight, String coverPhoto, String shortDescription,
-			String longDescription, LocalDate importDate) {
+	public LapCategory(Brand brand, String name, String size, double weight, String coverPhoto, String shortDescription,
+					   String longDescription, LocalDate importDate) {
 		super();
 		this.brand = brand;
 		this.name = name;
@@ -73,16 +73,16 @@ public class BagCategory implements Serializable {
 		this.importDate = importDate;
 	}
 
-	public BagCategory() {
+	public LapCategory() {
 		super();
 	}
 
-	public int getBagCategoryId() {
-		return bagCategoryId;
+	public int getLapCategoryId() {
+		return lapCategoryId;
 	}
 
-	public void setBagCategoryId(int bagCategoryId) {
-		this.bagCategoryId = bagCategoryId;
+	public void setLapCategoryIdapCategoryId(int lapCategoryId) {
+		this.lapCategoryId = lapCategoryId;
 	}
 
 	public Brand getBrand() {
@@ -149,12 +149,12 @@ public class BagCategory implements Serializable {
 		this.importDate = importDate;
 	}
 //
-//	public List<Bag> getListBags() {
-//		return listBags;
+//	public List<lap> getListlaps() {
+//		return listlaps;
 //	}
 //
-//	public void setListBags(List<Bag> listBags) {
-//		this.listBags = listBags;
+//	public void setListlaps(List<lap> listlaps) {
+//		this.listlaps = listlaps;
 //	}
 
 	public String getBrandName() {
@@ -163,7 +163,7 @@ public class BagCategory implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "BagCategory [bagCategoryId=" + bagCategoryId + ", brand=" + brand + ", name=" + name + ", size=" + size
+		return "LapCategory [lapCategoryId=" + lapCategoryId + ", brand=" + brand + ", name=" + name + ", size=" + size
 				+ ", weight=" + weight + ", coverPhoto=" + coverPhoto + ", shortDescription=" + shortDescription
 				+ ", longDescription=" + longDescription + "]";
 	}

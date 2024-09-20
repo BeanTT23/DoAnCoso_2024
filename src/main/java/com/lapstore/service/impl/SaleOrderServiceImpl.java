@@ -1,13 +1,12 @@
-package com.g16.handbagstore.service.impl;
+package com.lapstore.service.impl;
 
 import java.util.List;
 
-import com.g16.handbagstore.entity.SaleOrder;
-import com.g16.handbagstore.service.SaleOrderService;
+import com.lapstore.entity.SaleOrder;
+import com.lapstore.service.SaleOrderService;
+import com.lapstore.repository.SaleOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.g16.handbagstore.repository.SaleOrderRepository;
 
 @Service
 public class SaleOrderServiceImpl implements SaleOrderService {

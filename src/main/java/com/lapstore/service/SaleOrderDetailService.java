@@ -1,13 +1,13 @@
-package com.g16.handbagstore.service;
+package com.lapstore.service;
 
 import java.util.List;
 
-import com.g16.handbagstore.entity.SaleOrderDetail;
+import com.lapstore.entity.SaleOrderDetail;
 
 public interface SaleOrderDetailService {
 	List<SaleOrderDetail> getAllSaleOrderDetail();
 	List<SaleOrderDetail> getSaleOrderDetailsBySaleOrderID(int saleOrderID);
-	List<SaleOrderDetail> getSaleOrderDetailsByBagID(int bagID);
-	SaleOrderDetail getSaleOrderDetailBySaleOrderIdAndBagId(int saleOrderID, int bagID);
+	List<SaleOrderDetail> getSaleOrderDetailsByLapID(int lapID);
+	SaleOrderDetail getSaleOrderDetailBySaleOrderIdAndLapId(int saleOrderID, int lapID);
 	void addOrUpdateSaleOrderDetail(SaleOrderDetail saleOrderDetail);
 }

@@ -1,4 +1,4 @@
-package com.g16.handbagstore.entity;
+package com.lapstore.entity;
 
 import java.io.Serializable;
 
@@ -11,13 +11,13 @@ public class CartDetailPK implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private int cartHeader;
-	private int bag;
+	private int lap;
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + bag;
+		result = prime * result + lap;
 		result = prime * result + cartHeader;
 		return result;
 	}
@@ -31,7 +31,7 @@ public class CartDetailPK implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		CartDetailPK other = (CartDetailPK) obj;
-		if (bag != other.bag)
+		if (lap != other.lap)
 			return false;
 		if (cartHeader != other.cartHeader)
 			return false;

@@ -1,8 +1,8 @@
-package com.g16.handbagstore.service;
+package com.lapstore.service;
 
 import java.util.List;
 
-import com.g16.handbagstore.entity.Brand;
+import com.lapstore.entity.Brand;
 
 public interface BrandService {
 	List<Brand> getAllBrand();

@@ -1,4 +1,4 @@
-package com.g16.handbagstore.entity;
+package com.lapstore.entity;
 
 import java.io.Serializable;
 
@@ -24,16 +24,16 @@ public class CartDetail implements Serializable {
 	private CartHeader cartHeader;
 	@Id
 	@ManyToOne
-	@JoinColumn(name = "bag_id")
-	private Bag bag;
-	@Column(name = "bag_qty", columnDefinition = "int", nullable = false)
-	private int bagQty;
+	@JoinColumn(name = "lap_id")
+	private Lap lap;
+	@Column(name = "lap_qty", columnDefinition = "int", nullable = false)
+	private int lapQty;
 
-	public CartDetail(CartHeader cartHeader, Bag bag, int bagQty) {
+	public CartDetail(CartHeader cartHeader, Lap lap, int lapQty) {
 		super();
 		this.cartHeader = cartHeader;
-		this.bag = bag;
-		this.bagQty = bagQty;
+		this.lap = lap;
+		this.lapQty = lapQty;
 	}
 
 	public CartDetail() {
@@ -48,24 +48,24 @@ public class CartDetail implements Serializable {
 		this.cartHeader = cartHeader;
 	}
 
-	public Bag getBag() {
-		return bag;
+	public Lap getLap() {
+		return lap;
 	}
 
-	public void setBag(Bag bag) {
-		this.bag = bag;
+	public void setLap(Lap lap) {
+		this.lap = lap;
 	}
 
-	public int getBagQty() {
-		return bagQty;
+	public int getLapQty() {
+		return lapQty;
 	}
 
-	public void setBagQty(int bagQty) {
-		this.bagQty = bagQty;
+	public void setLapQty(int lapQty) {
+		this.lapQty = lapQty;
 	}
 
 	@Override
 	public String toString() {
-		return "CartDetail [cartHeader=" + cartHeader + ", bag=" + bag + ", bagQty=" + bagQty + "]";
+		return "CartDetail [cartHeader=" + cartHeader + ", lap=" + lap + ", lapQty=" + lapQty + "]";
 	}
 }

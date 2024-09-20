@@ -1,8 +1,8 @@
-package com.g16.handbagstore.service;
+package com.lapstore.service;
 
 import java.util.List;
 
-import com.g16.handbagstore.entity.User;
+import com.lapstore.entity.User;
 
 public interface UserService {
 	List<User> getAllUsers();

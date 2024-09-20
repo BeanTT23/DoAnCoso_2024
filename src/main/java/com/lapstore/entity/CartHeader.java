@@ -1,4 +1,4 @@
-package com.g16.handbagstore.entity;
+package com.lapstore.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

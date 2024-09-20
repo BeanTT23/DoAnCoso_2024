@@ -1,4 +1,4 @@
-package com.g16.handbagstore.components;
+package com.lapstore.components;
 
 import org.springframework.stereotype.Component;
 

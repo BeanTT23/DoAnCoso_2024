@@ -37,10 +37,10 @@
             <div class="product-introduce mt-5">
                 <p>
                     Kích thước:
-                    <span th:text="${bagCategory.size}"></span>
+                    <span th:text="${lapCategory.size}"></span>
                 </p>
-                <p class="text-slate-800 text-base mt-3" th:text="${bagCategory.shortDescription}"></p>
-                <p class="text-slate-800 text-base mt-3" th:text="${bagCategory.longDescription}"></p>
+                <p class="text-slate-800 text-base mt-3" th:text="${lapCategory.shortDescription}"></p>
+                <p class="text-slate-800 text-base mt-3" th:text="${lapCategory.longDescription}"></p>
             </div>
             <div class="product-reviews-container w-full flex flex-col">
                 <div class="product-evaluate py-5 flex flex-row items-center">
@@ -87,26 +87,26 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="product-info-container order-1 md:order-2 lg:order-2 w-full md:w-1/3 lg:w-1/3 h-auto pl-5 py-3 relative md:sticky lg:sticky md:top-0 lg:top-0 md:right-0 lg:right-0">
             <div class="product-info-top flex flex-col flex-wrap">
-                <input type="hidden" id="currentBagCategory" th:value="${bagCategory.bagCategoryId}">
-                <h2 class="product-name font-medium text-xl" th:text="${bagCategory.name}"></h2>
+                <input type="hidden" id="currentlapCategory" th:value="${lapCategory.lapCategoryId}">
+                <h2 class="product-name font-medium text-xl" th:text="${lapCategory.name}"></h2>
                 <h3 class="product-price text-2xl font-bold mt-5 text-red-800">
 
                 </h3>
             </div>
             <div class="product-info-center mt-5">
                 <p class="text-slate-800">
-                    Các màu:
+                    CPU:
                 </p>
-                
+
                 <div class="product-info-colors w-full mt-3 flex flex-row justify-start items-center flex-wrap">
 
                 </div>
                 <p class="mt-5">
                     Số lượng còn:
-                    <span class="bag-quantity font-bold">3</span>
+                    <span class="lap-quantity font-bold">3</span>
                 </p>
             </div>
             <div class="product-info-bottom flex flex-col mt-8">
@@ -129,29 +129,29 @@
                     </div>
                 </div>
                 <div class="product-buyOptions-container mt-8 flex flex-col justify-start items-start">
-                
-                	<form action="#" class="w-full" th:action="@{/products/product/add_to_cart}" method="post">
-                		<input type="hidden" name="orderQuantity" class="orderQuantity" value="" />
-                		<input type="hidden" value="" class="selectedColor" name="bagID"/>
-                		<input type="hidden" th:value="${userID}" name="cusID"/>
-                		<input type="hidden" th:value="${bagCategory.bagCategoryId}" name="bagCateID"/>
-                		
-	                    <button type="submit" class="product-buyOption product-addToCart">
-	                        Thêm vào giỏ hàng
-	                    </button>
-                	</form>
-                	
-                	<div th:if="${param.added != null}">
-	                	<div class="product-alert active">
-	                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-	                             class="svg-icon product-alert-icon">
-	                            <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm-1.999 14.413-3.713-3.705L7.7 11.292l2.299 2.295 5.294-5.294 1.414 1.414-6.706 6.706z"></path>
-	                        </svg>
-	                        <p class="product-alert-title">
-	                            Đã thêm sản phẩm vào giỏ hàng của bạn
-	                        </p>
-	                    </div>
-                	</div>
+
+                    <form action="#" class="w-full" th:action="@{/products/product/add_to_cart}" method="post">
+                        <input type="hidden" name="orderQuantity" class="orderQuantity" value="" />
+                        <input type="hidden" value="" class="selectedColor" name="lapID"/>
+                        <input type="hidden" th:value="${userID}" name="cusID"/>
+                        <input type="hidden" th:value="${lapCategory.lapCategoryId}" name="lapCateID"/>
+
+                        <button type="submit" class="product-buyOption product-addToCart">
+                            Thêm vào giỏ hàng
+                        </button>
+                    </form>
+
+                    <div th:if="${param.added != null}">
+                        <div class="product-alert active">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 class="svg-icon product-alert-icon">
+                                <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm-1.999 14.413-3.713-3.705L7.7 11.292l2.299 2.295 5.294-5.294 1.414 1.414-6.706 6.706z"></path>
+                            </svg>
+                            <p class="product-alert-title">
+                                Đã thêm sản phẩm vào giỏ hàng của bạn
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

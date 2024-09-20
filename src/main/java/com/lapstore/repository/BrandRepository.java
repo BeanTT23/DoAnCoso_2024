@@ -1,6 +1,6 @@
-package com.g16.handbagstore.repository;
+package com.lapstore.repository;
 
-import com.g16.handbagstore.entity.Brand;
+import com.lapstore.entity.Brand;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BrandRepository extends JpaRepository<Brand, Integer> {

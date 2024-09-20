@@ -23,7 +23,7 @@ public class Lap implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "bag_id")
+	@Column(name = "lap_id")
 	private int lapId;
 	@ManyToOne
 	@JoinColumn(name = "lap_category_id", nullable = false)
@@ -39,12 +39,12 @@ public class Lap implements Serializable {
 	private List<SaleOrderDetail> listSaleOrderDetails;
 
 	@OneToMany(mappedBy = "lap")
-	private List<LapImage> listlapImages;
+	private List<LapImage> listLapImages;
 
 	@OneToMany(mappedBy = "lap")
-	private List<lapReview> listlapReviews;
+	private List<LapReview> listLapReviews;
 
-	public Lap(int lapId, lapCategory lapCategory, String color, BigDecimal price, int quantity) {
+	public Lap(int lapId, LapCategory lapCategory, String color, BigDecimal price, int quantity) {
 		super();
 		this.lapId = lapId;
 		this.lapCategory = lapCategory;
@@ -53,7 +53,7 @@ public class Lap implements Serializable {
 		this.quantity = quantity;
 	}
 
-	public Lap(lapCategory lapCategory, String color, BigDecimal price, int quantity) {
+	public Lap(LapCategory lapCategory, String color, BigDecimal price, int quantity) {
 		super();
 		this.lapCategory = lapCategory;
 		this.color = color;
@@ -65,19 +65,19 @@ public class Lap implements Serializable {
 		super();
 	}
 
-	public int getlapId() {
+	public int getLapId() {
 		return lapId;
 	}
 
-	public void setlapId(int lapId) {
+	public void setLapId(int lapId) {
 		this.lapId = lapId;
 	}
 
-	public lapCategory getlapCategory() {
+	public LapCategory getLapCategory() {
 		return lapCategory;
 	}
 
-	public void setlapCategory(lapCategory lapCategory) {
+	public void setLapCategory(LapCategory lapCategory) {
 		this.lapCategory = lapCategory;
 	}
 

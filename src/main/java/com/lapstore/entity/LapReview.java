@@ -1,4 +1,4 @@
-package com.g16.handbagstore.entity;
+package com.lapstore.entity;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -13,19 +13,19 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "bag_reviews")
-public class BagReview implements Serializable {
+@Table(name = "lap_reviews")
+public class LapReview implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "bag_review_id")
-	private int bagReviewId;
+	@Column(name = "lap_review_id")
+	private int lapReviewId;
 	@ManyToOne
-	@JoinColumn(name = "bag_id", nullable = false)
-	private Bag bag;
+	@JoinColumn(name = "lap_id", nullable = false)
+	private Lap lap;
 	@ManyToOne
 	@JoinColumn(name = "customer_id", nullable = false)
 	private User customer;
@@ -36,43 +36,43 @@ public class BagReview implements Serializable {
 	@Column(name = "review_date", columnDefinition = "datetime", nullable = false)
 	private LocalDateTime reviewDate;
 
-	public BagReview(int bagReviewId, Bag bag, User customer, String comment, int star, LocalDateTime reviewDate) {
+	public LapReview(int lapReviewId, Lap lap, User customer, String comment, int star, LocalDateTime reviewDate) {
 		super();
-		this.bagReviewId = bagReviewId;
-		this.bag = bag;
+		this.lapReviewId = lapReviewId;
+		this.lap = lap;
 		this.customer = customer;
 		this.comment = comment;
 		this.star = star;
 		this.reviewDate = reviewDate;
 	}
 
-	public BagReview(Bag bag, User customer, String comment, int star, LocalDateTime reviewDate) {
+	public LapReview(Lap lap, User customer, String comment, int star, LocalDateTime reviewDate) {
 		super();
-		this.bag = bag;
+		this.lap = lap;
 		this.customer = customer;
 		this.comment = comment;
 		this.star = star;
 		this.reviewDate = reviewDate;
 	}
 
-	public BagReview() {
+	public LapReview() {
 		super();
 	}
 
-	public int getBagReviewId() {
-		return bagReviewId;
+	public int getlapReviewId() {
+		return lapReviewId;
 	}
 
-	public void setBagReviewId(int bagReviewId) {
-		this.bagReviewId = bagReviewId;
+	public void setLapReviewId(int lapReviewId) {
+		this.lapReviewId = lapReviewId;
 	}
 
-	public Bag getBag() {
-		return bag;
+	public Lap getLap() {
+		return lap;
 	}
 
-	public void setBag(Bag bag) {
-		this.bag = bag;
+	public void setLap(Lap lap) {
+		this.lap = lap;
 	}
 
 	public User getCustomer() {
@@ -109,7 +109,7 @@ public class BagReview implements Serializable {
 
 	@Override
 	public String toString() {
-		return "BagReview [bagReviewId=" + bagReviewId + ", bag=" + bag + ", customer=" + customer + ", comment="
+		return "LapReview [lapReviewId=" + lapReviewId + ", lap=" + lap + ", customer=" + customer + ", comment="
 				+ comment + ", star=" + star + ", reviewDate=" + reviewDate + "]";
 	}
 }

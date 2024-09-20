@@ -12,92 +12,92 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BagCategoryServiceImpl implements LapCategoryService {
+public class LapCategoryServiceImpl implements LapCategoryService {
 
 	@Autowired
-	private BagServiceImpl bagServiceImpl;
+	private LapServiceImpl lapServiceImpl;
 	
 	@Autowired
-	private LapCategoryRepository bagCategoryRepo;
+	private LapCategoryRepository lapCategoryRepo;
 
 	@Override
-	public List<LapCategory> getAllBagCategories() {
-		return bagCategoryRepo.findAll();
+	public List<LapCategory> getAllLapCategories() {
+		return lapCategoryRepo.findAll();
 	}
 
 	@Override
-	public LapCategory getBagCategoryByID(int bagCategoryID) {
-		return bagCategoryRepo.findById(bagCategoryID).get();
+	public LapCategory getLapCategoryByID(int lapCategoryID) {
+		return lapCategoryRepo.findById(lapCategoryID).get();
 	}
 
 	@Override
-	public List<LapCategory> getBagCategoriesByName(String name) {
-		return bagCategoryRepo.getBagCategoriesByName(name);
+	public List<LapCategory> getLapCategoriesByName(String name) {
+		return lapCategoryRepo.getLapCategoriesByName(name);
 	}
 
 	@Override
-	public List<LapCategory> getBagCategoriesByImportDate(LocalDate importDate) {
-		return bagCategoryRepo.getBagCategoriesByImportDate(importDate);
+	public List<LapCategory> getLapCategoriesByImportDate(LocalDate importDate) {
+		return lapCategoryRepo.getLapCategoriesByImportDate(importDate);
 	}
 
 //	@Override
-//	public double getMinPriceOfBagCategory(int bagCategoryId) {
-//		return bagCategoryRepo.getMinPriceOfBagCategory(bagCategoryId);
+//	public double getMinPriceOfLapCategory(int lapCategoryId) {
+//		return lapCategoryRepo.getMinPriceOfLapCategory(lapCategoryId);
 //	}
 
 	@Override
-	public List<LapCategory> getBagCategoriesLikeName(String name) {
-		return bagCategoryRepo.getBagCategoriesLikeName("%" + name + "%");
+	public List<LapCategory> getLapCategoriesLikeName(String name) {
+		return lapCategoryRepo.getLapCategoriesLikeName("%" + name + "%");
 	}
 
 	@Override
-	public List<LapCategory> getBagCategoriesOrderByNameFromA2Z() {
-		return bagCategoryRepo.getBagCategoriesOrderByNameFromA2Z();
+	public List<LapCategory> getLapCategoriesOrderByNameFromA2Z() {
+		return lapCategoryRepo.getLapCategoriesOrderByNameFromA2Z();
 	}
 
 	@Override
-	public List<LapCategory> getBagCategoriesOrderByNameFromZ2A() {
-		return bagCategoryRepo.getBagCategoriesOrderByNameFromZ2A();
+	public List<LapCategory> getLapCategoriesOrderByNameFromZ2A() {
+		return lapCategoryRepo.getLapCategoriesOrderByNameFromZ2A();
 	}
 
 	@Override
-	public List<LapCategory> getBagCategoriesOrderByPriceAsc() {
-		List<LapCategory> bagCategories = new ArrayList<>();
+	public List<LapCategory> getLapCategoriesOrderByPriceAsc() {
+		List<LapCategory> lapCategories = new ArrayList<>();
 		
-		LinkedHashSet<Integer> cateIdList = bagServiceImpl.getBagCategoryIdOrderByPriceAsc();
-		
-		cateIdList.forEach(cateId -> {
-			bagCategories.add(getBagCategoryByID(cateId));
-		});
-		
-		return bagCategories;
-	}
-
-	@Override
-	public List<LapCategory> getBagCategoriesOrderByPriceDesc() {
-		List<LapCategory> bagCategories = new ArrayList<>();
-		
-		LinkedHashSet <Integer> cateIdList = bagServiceImpl.getBagCategoryIdOrderByPriceDesc();
+		LinkedHashSet<Integer> cateIdList = lapServiceImpl.getLapCategoryIdOrderByPriceAsc();
 		
 		cateIdList.forEach(cateId -> {
-			bagCategories.add(getBagCategoryByID(cateId));
+			lapCategories.add(getLapCategoryByID(cateId));
 		});
 		
-		return bagCategories;
+		return lapCategories;
 	}
 
 	@Override
-	public List<LapCategory> getBagCategoriesByNewestDate() {
-		return bagCategoryRepo.getBagCategoriesByNewestDate();
+	public List<LapCategory> getLapCategoriesOrderByPriceDesc() {
+		List<LapCategory> lapCategories = new ArrayList<>();
+		
+		LinkedHashSet <Integer> cateIdList = lapServiceImpl.getLapCategoryIdOrderByPriceDesc();
+		
+		cateIdList.forEach(cateId -> {
+			lapCategories.add(getLapCategoryByID(cateId));
+		});
+		
+		return lapCategories;
 	}
 
 	@Override
-	public void addOrUpdateBagCategory(LapCategory bagCategory) {
-		bagCategoryRepo.save(bagCategory);
+	public List<LapCategory> getLapCategoriesByNewestDate() {
+		return lapCategoryRepo.getLapCategoriesByNewestDate();
+	}
+
+	@Override
+	public void addOrUpdateLapCategory(LapCategory lapCategory) {
+		lapCategoryRepo.save(lapCategory);
   }
     
   @Override
-	public List<LapCategory> searchBagCaterogyALikeByKeyword(String keyword) {
-		return bagCategoryRepo.searchBagCaterogyALikeByKeyword("%" + keyword + "%");
+	public List<LapCategory> searchLapCaterogyALikeByKeyword(String keyword) {
+		return lapCategoryRepo.searchLapCaterogyALikeByKeyword("%" + keyword + "%");
 	}
 }

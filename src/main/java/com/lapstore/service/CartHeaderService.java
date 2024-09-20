@@ -1,9 +1,9 @@
-package com.g16.handbagstore.service;
+package com.lapstore.service;
 
 import java.util.List;
 
-import com.g16.handbagstore.entity.CartHeader;
-import com.g16.handbagstore.entity.CartDetail;
+import com.lapstore.entity.CartHeader;
+import com.lapstore.entity.CartDetail;
 
 public interface CartHeaderService {
 	List<CartHeader> getAllCartHeader();

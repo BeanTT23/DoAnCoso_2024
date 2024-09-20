@@ -1,4 +1,4 @@
-package com.g16.handbagstore.rest;
+package com.lapstore.rest;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -6,15 +6,15 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.lapstore.entity.SaleOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.g16.handbagstore.entity.SaleOrder;
-import com.g16.handbagstore.service.impl.SaleOrderServiceImpl;
-import com.g16.handbagstore.ultility.MyUltility;
+import com.lapstore.service.impl.SaleOrderServiceImpl;
+import com.lapstore.ultility.MyUltility;
 
 @RestController
 @RequestMapping("/api_sale_admin")

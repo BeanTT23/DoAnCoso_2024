@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-public interface BagImageRepository extends JpaRepository<LapImage, Integer> {
-	@Query("from LapImage where bag_id = :bagID")
-	List<LapImage> getBagImagesByBagID(@Param("bagID") int bagID);
+public interface LapImageRepository extends JpaRepository<LapImage, Integer> {
+	@Query("from LapImage where lap_id = :lapID")
+	List<LapImage> getLapImagesByLapID(@Param("lapID") int lapID);
 }

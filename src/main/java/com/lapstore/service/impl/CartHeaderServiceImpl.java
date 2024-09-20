@@ -1,16 +1,15 @@
-package com.g16.handbagstore.service.impl;
+package com.lapstore.service.impl;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
-import com.g16.handbagstore.entity.CartDetail;
-import com.g16.handbagstore.entity.CartHeader;
-import com.g16.handbagstore.service.CartHeaderService;
+import com.lapstore.entity.CartDetail;
+import com.lapstore.entity.CartHeader;
+import com.lapstore.service.CartHeaderService;
+import com.lapstore.repository.CartHeaderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.g16.handbagstore.repository.CartHeaderRepository;
 
 @Service
 public class CartHeaderServiceImpl implements CartHeaderService {
@@ -50,8 +49,8 @@ public class CartHeaderServiceImpl implements CartHeaderService {
 
 		for (CartDetail cartDetail : cartDetails) {
 			totalPrice = totalPrice
-					.add(cartDetail.getBag().getPrice().multiply(new BigDecimal(cartDetail.getBagQty())));
-			totalQuantity += cartDetail.getBagQty();
+					.add(cartDetail.getLap().getPrice().multiply(new BigDecimal(cartDetail.getLapQty())));
+			totalQuantity += cartDetail.getLapQty();
 		}
 			
 		cartHeader.setTotalPrice(totalPrice);

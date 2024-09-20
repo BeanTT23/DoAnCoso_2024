@@ -1,4 +1,4 @@
-package com.g16.handbagstore.entity;
+package com.lapstore.entity;
 
 import java.io.Serializable;
 import java.util.List;
@@ -26,7 +26,7 @@ public class Brand implements Serializable {
 	private String name;
 
 	@OneToMany(mappedBy = "brand")
-	private List<BagCategory> listBagCategories;
+	private List<LapCategory> listLapCategories;
 
 	public Brand(int id, String name) {
 		super();

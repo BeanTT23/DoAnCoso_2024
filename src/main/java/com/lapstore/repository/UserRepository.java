@@ -1,6 +1,6 @@
-package com.g16.handbagstore.repository;
+package com.lapstore.repository;
 
-import com.g16.handbagstore.entity.User;
+import com.lapstore.entity.User;
 
 import java.util.List;
 

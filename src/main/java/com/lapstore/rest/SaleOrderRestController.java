@@ -1,16 +1,15 @@
-package com.g16.handbagstore.rest;
+package com.lapstore.rest;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.lapstore.entity.SaleOrder;
+import com.lapstore.service.SaleOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.g16.handbagstore.entity.SaleOrder;
-import com.g16.handbagstore.service.SaleOrderService;
 
 @RestController
 @RequestMapping("/api")
@@ -21,7 +20,7 @@ public class SaleOrderRestController {
 
 	@GetMapping("/saleOrders/search")
 	public List<String> getSaleOrdersToday(@RequestParam String keyword) {
-		List<SaleOrder> saleOrders = saleOrderService.getSaleOrderALikeByKeyWord(keyword); 
+		List<SaleOrder> saleOrders = saleOrderService.getSaleOrderALikeByKeyWord(keyword);
 		List<String> res  = new ArrayList<>();
 		
 		saleOrders.forEach(saleOrder -> {

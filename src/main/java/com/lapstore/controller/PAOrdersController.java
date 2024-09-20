@@ -1,11 +1,11 @@
-package com.g16.handbagstore.controller;
+package com.lapstore.controller;
 
-import com.g16.handbagstore.entity.SaleOrder;
-import com.g16.handbagstore.entity.SaleOrderDetail;
-import com.g16.handbagstore.entity.User;
-import com.g16.handbagstore.service.SaleOrderDetailService;
-import com.g16.handbagstore.service.SaleOrderService;
-import com.g16.handbagstore.service.UserService;
+import com.lapstore.entity.SaleOrder;
+import com.lapstore.entity.SaleOrderDetail;
+import com.lapstore.entity.User;
+import com.lapstore.service.SaleOrderDetailService;
+import com.lapstore.service.SaleOrderService;
+import com.lapstore.service.UserService;
 
 import java.util.ArrayList;
 import java.util.List;

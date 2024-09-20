@@ -1,15 +1,15 @@
-package com.g16.handbagstore.service;
+package com.lapstore.service;
 
 import java.util.List;
 
-import com.g16.handbagstore.entity.CartDetail;
+import com.lapstore.entity.CartDetail;
 
 public interface CartDetailService {
 	List<CartDetail> getAllCartDetail();
 	List<CartDetail> getCartDetailsByCartHeaderID(int cartID);
-	List<CartDetail> getCartDetailsByBagID(int bagID);
-	CartDetail getCartDetailByCartHeaderIdAndBagId(int cartID, int bagID);
+	List<CartDetail> getCartDetailsByLapID(int lapID);
+	CartDetail getCartDetailByCartHeaderIdAndLapId(int cartID, int lapID);
 	void addOrUpdateCartDetail(CartDetail cartDetail);
 	void deleteCartDetailByCartHeaderId(int cartID);
-	void deleteCartDetailByCartHeaderIdAndBagId(int cartID, int bagID);
+	void deleteCartDetailByCartHeaderIdAndLapId(int cartID, int lapID);
 }

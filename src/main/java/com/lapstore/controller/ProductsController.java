@@ -1,19 +1,20 @@
-package com.g16.handbagstore.controller;
+package com.lapstore.controller;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.g16.handbagstore.entity.Bag;
-import com.g16.handbagstore.entity.BagCategory;
-import com.g16.handbagstore.entity.CartDetail;
-import com.g16.handbagstore.entity.CartHeader;
-import com.g16.handbagstore.service.BagCategoryService;
-import com.g16.handbagstore.service.UserService;
-import com.g16.handbagstore.service.impl.BagServiceImpl;
-import com.g16.handbagstore.service.impl.CartDetailServiceImpl;
-import com.g16.handbagstore.service.impl.CartHeaderServiceImpl;
-import com.g16.handbagstore.service.impl.UserServiceImpl;
+
+import com.lapstore.entity.Lap;
+import com.lapstore.entity.LapCategory;
+import com.lapstore.entity.CartDetail;
+import com.lapstore.entity.CartHeader;
+import com.lapstore.service.LapCategoryService;
+import com.lapstore.service.UserService;
+import com.lapstore.service.impl.LapServiceImpl;
+import com.lapstore.service.impl.CartDetailServiceImpl;
+import com.lapstore.service.impl.CartHeaderServiceImpl;
+import com.lapstore.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,10 +32,10 @@ public class ProductsController {
     private UserService userService;
 
     @Autowired
-    private BagServiceImpl bagServiceImpl;
+    private LapServiceImpl lapServiceImpl;
     
     @Autowired
-    private BagCategoryService bagCategoryService;
+    private LapCategoryService lapCategoryService;
     
     @Autowired
 	private CartHeaderServiceImpl cartHeaderServiceImpl;
@@ -49,14 +50,15 @@ public class ProductsController {
     public String showAllProducts(Model model){
         UserSession.getLoggedUserInfo(userService, model);
 
-        List<BagCategory> listBagCategory = bagCategoryService.getAllBagCategories();
+        List<LapCategory> listLapCategory = lapCategoryService.getAllLapCategories();
 
-        List<String> bagCatePriceList = bagServiceImpl.listPrice(listBagCategory);
-        
-        model.addAttribute("resultSize", listBagCategory.size());
+        List<String> lapCatePriceList = lapServiceImpl.listPrice(listLapCategory);
+
+
+        model.addAttribute("resultSize", listLapCategory.size());
         model.addAttribute("pageTitle", "Tất cả sản phẩm");
-        model.addAttribute("listProducts", listBagCategory);
-        model.addAttribute("listProductsPrice", bagCatePriceList); 
+        model.addAttribute("listProducts", listLapCategory);
+        model.addAttribute("listProductsPrice", lapCatePriceList);
         
         return "/view_customer/all_products";
     }
@@ -65,23 +67,23 @@ public class ProductsController {
     public String showAllProducts(Model model, @RequestParam String sort){
         UserSession.getLoggedUserInfo(userService, model);
 
-        List<BagCategory> listBagCategory = new ArrayList<>();
+        List<LapCategory> listLapCategory = new ArrayList<>();
         
         if(sort.equals("1"))
-        	listBagCategory = bagCategoryService.getBagCategoriesOrderByNameFromA2Z();
+        	listLapCategory = lapCategoryService.getLapCategoriesOrderByNameFromA2Z();
         else if(sort.equals("2"))
-        	listBagCategory = bagCategoryService.getBagCategoriesOrderByNameFromZ2A();
+        	listLapCategory = lapCategoryService.getLapCategoriesOrderByNameFromZ2A();
         else if(sort.equals("3"))
-        	listBagCategory = bagCategoryService.getBagCategoriesOrderByPriceAsc();
+        	listLapCategory = lapCategoryService.getLapCategoriesOrderByPriceAsc();
         else if(sort.equals("4"))
-        	listBagCategory = bagCategoryService.getBagCategoriesOrderByPriceDesc();
+        	listLapCategory = lapCategoryService.getLapCategoriesOrderByPriceDesc();
 
-        List<String> bagCatePriceList = bagServiceImpl.listPrice(listBagCategory);
+        List<String> lapCatePriceList = lapServiceImpl.listPrice(listLapCategory);
         
-        model.addAttribute("resultSize", listBagCategory.size());
+        model.addAttribute("resultSize", listLapCategory.size());
         model.addAttribute("pageTitle", "Tất cả sản phẩm");
-        model.addAttribute("listProducts", listBagCategory);
-        model.addAttribute("listProductsPrice", bagCatePriceList); 
+        model.addAttribute("listProducts", listLapCategory);
+        model.addAttribute("listProductsPrice", lapCatePriceList);
         
         return "/view_customer/all_products";
     }
@@ -90,14 +92,14 @@ public class ProductsController {
     public String showNewestProducts(Model model){
     	UserSession.getLoggedUserInfo(userService, model);
 
-        List<BagCategory> listBagCategory = bagCategoryService.getBagCategoriesByNewestDate();
+        List<LapCategory> listLapCategory = lapCategoryService.getLapCategoriesByNewestDate();
 
-        List<String> bagCatePriceList = bagServiceImpl.listPrice(listBagCategory);
+        List<String> lapCatePriceList = lapServiceImpl.listPrice(listLapCategory);
         
-        model.addAttribute("resultSize", listBagCategory.size());
+        model.addAttribute("resultSize", listLapCategory.size());
         model.addAttribute("pageTitle", "Tất cả sản phẩm");
-        model.addAttribute("listProducts", listBagCategory);
-        model.addAttribute("listProductsPrice", bagCatePriceList); 
+        model.addAttribute("listProducts", listLapCategory);
+        model.addAttribute("listProductsPrice", lapCatePriceList);
         return "view_customer/all_products";
     }
 
@@ -106,10 +108,10 @@ public class ProductsController {
     public String showProductDetail(@PathVariable("categoryId") int categoryId, Model model){
         UserSession.getLoggedUserInfo(userService, model);
 
-        BagCategory bagCategory = bagCategoryService.getBagCategoryByID(categoryId);
+        LapCategory lapCategory = lapCategoryService.getLapCategoryByID(categoryId);
 
-        model.addAttribute("bagCategory", bagCategory);
-        model.addAttribute("pageTitle", bagCategory.getName());
+        model.addAttribute("lapCategory", lapCategory);
+        model.addAttribute("pageTitle", lapCategory.getName());
 
         return "/view_customer/product_detail";
     }
@@ -118,25 +120,25 @@ public class ProductsController {
     @PostMapping("/product/add_to_cart")
 	public String addToCart(
 			@RequestParam int cusID, @RequestParam int orderQuantity,
-			@RequestParam int bagID, @RequestParam int bagCateID
+			@RequestParam int lapID, @RequestParam int lapCateID
 	) {
 
 		CartHeader cartHeader = cartHeaderServiceImpl.getCartHeaderByID(cusID);
-		Bag bag = bagServiceImpl.getBagByID(bagID);
+		Lap lap = lapServiceImpl.getLapByID(lapID);
 		
 		if(cartHeader != null) {
-			CartDetail cartDetail = cartDetailServiceImpl.getCartDetailByCartHeaderIdAndBagId(cusID, bagID);
+			CartDetail cartDetail = cartDetailServiceImpl.getCartDetailByCartHeaderIdAndLapId(cusID, lapID);
 			
 			if(cartDetail != null)
-				cartDetail.setBagQty(cartDetail.getBagQty() + orderQuantity);
+				cartDetail.setLapQty(cartDetail.getLapQty() + orderQuantity);
 			else
-				cartDetail = new CartDetail(cartHeader, bag, orderQuantity);
+				cartDetail = new CartDetail(cartHeader, lap, orderQuantity);
 				
 			cartDetailServiceImpl.addOrUpdateCartDetail(cartDetail);
 
 			cartHeader
 					.setTotalPrice(cartHeader.getTotalPrice()
-							.add(bag.getPrice().multiply(new BigDecimal(orderQuantity))));
+							.add(lap.getPrice().multiply(new BigDecimal(orderQuantity))));
 
 			cartHeader.setTotalQuantity(cartHeader.getTotalQuantity() + orderQuantity);
 
@@ -144,19 +146,19 @@ public class ProductsController {
 		}
 		else {
 			cartHeader = new CartHeader(new BigDecimal(0), 0, userServiceImpl.getUserByUserID(cusID));
-			CartDetail cartDetail = new CartDetail(cartHeader, bag, orderQuantity);
+			CartDetail cartDetail = new CartDetail(cartHeader, lap, orderQuantity);
 			
 			cartDetailServiceImpl.addOrUpdateCartDetail(cartDetail);
 
 			cartHeader
 					.setTotalPrice(cartHeader.getTotalPrice()
-							.add(bag.getPrice().multiply(new BigDecimal(orderQuantity))));
+							.add(lap.getPrice().multiply(new BigDecimal(orderQuantity))));
 
 			cartHeader.setTotalQuantity(cartHeader.getTotalQuantity() + orderQuantity);
 
 			cartHeaderServiceImpl.addOrUpdateCartHeader(cartHeader);
 		}
 		
-		return "redirect:/products/product/" + bagCateID + "?added";
+		return "redirect:/products/product/" + lapCateID + "?added";
 	}
 }

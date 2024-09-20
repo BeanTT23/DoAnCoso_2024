@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.g9</groupId>
-	<artifactId>HandBagStore</artifactId>
+	<artifactId>LapStore</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>HandBagStore</name>
 	<description>Big project for WWW subject</description>

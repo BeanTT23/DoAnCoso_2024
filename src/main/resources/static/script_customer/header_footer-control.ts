@@ -35,14 +35,14 @@
     setActionWhenClickingOnOverlayDropdown(closeSearchIcon)
     setActionWhenClickingOnOverlayDropdown(overlayDropdown)
 
-    function renderBagSearchResultToHtml(bagData: object): string{
+    function renderlapSearchResultToHtml(lapData: object): string{
         let html = `
                     <div xmlns:th="http://www.thymeleaf.org/" class="search-results">
                             <ol id="search-suggestions" class="
                             search-results__list search-results__container search-results__container--autocomplete
                             ">
                                 <li class="universal-item">
-                                    <a href="/products/product/${bagData['bagCategoryId']}" class="universal-item__link">
+                                    <a href="/products/product/${lapData['lapCategoryId']}" class="universal-item__link">
                                         <span class="universal-item__text">
                                             <div class="universal-item__title with-autocomplete-icon">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: rgba(0, 0, 0, 1);"
@@ -51,7 +51,7 @@
                                                     <path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path>
                                                 </svg>
                                                <p class="universal-item__value">
-                                                   ${bagData['name']}
+                                                   ${lapData['name']}
                                                 </p>
                                             </div>
                                         </span>
@@ -64,15 +64,15 @@
         return html
     }
 
-    function getBagResultWithAPI(innerHTMLTarget: HTMLDivElement, keyword: string): void{
+    function getlapResultWithAPI(innerHTMLTarget: HTMLDivElement, keyword: string): void{
         innerHTMLTarget.innerHTML = ``
 
-        fetch(`http://localhost:8080/api/bags/search/${keyword}`)
+        fetch(`http://localhost:8080/api/laps/search/${keyword}`)
             .then(response => response.json())
             .then(function (data){
                 console.log(data[0])
                 for (let i = 0; i < 3; ++i){
-                    innerHTMLTarget.innerHTML +=  renderBagSearchResultToHtml(data[i])
+                    innerHTMLTarget.innerHTML +=  renderlapSearchResultToHtml(data[i])
                 }
             })
     }
@@ -105,7 +105,7 @@
             else{
                 searchBoxContainsClearAndSearchBtn.classList.add('active')
 
-                getBagResultWithAPI(suggestionSearchDropdown, searchKeyWord)
+                getlapResultWithAPI(suggestionSearchDropdown, searchKeyWord)
                 suggestionSearchDropdown.classList.add('active')
 
                 if (window.innerWidth > 768){

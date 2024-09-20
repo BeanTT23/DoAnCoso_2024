@@ -1,4 +1,4 @@
-package com.g16.handbagstore.entity;
+package com.lapstore.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -25,8 +25,8 @@ public class SaleOrderDetail implements Serializable {
 	private SaleOrder saleOrder;
 	@Id
 	@ManyToOne
-	@JoinColumn(name = "bag_id")
-	private Bag bag;
+	@JoinColumn(name = "lap_id")
+	private Lap lap;
 	@Column(name = "order_qty", columnDefinition = "int", nullable = false)
 	private int orderQty;
 	@Column(name = "unit_price", columnDefinition = "money", nullable = false)
@@ -34,10 +34,10 @@ public class SaleOrderDetail implements Serializable {
 	@Column(name = "line_total", columnDefinition = "money", nullable = false)
 	private BigDecimal lineTotal;
 
-	public SaleOrderDetail(SaleOrder saleOrder, Bag bag, int orderQty, BigDecimal unitPrice, BigDecimal lineTotal) {
+	public SaleOrderDetail(SaleOrder saleOrder, Lap lap, int orderQty, BigDecimal unitPrice, BigDecimal lineTotal) {
 		super();
 		this.saleOrder = saleOrder;
-		this.bag = bag;
+		this.lap = lap;
 		this.orderQty = orderQty;
 		this.unitPrice = unitPrice;
 		this.lineTotal = lineTotal;
@@ -55,12 +55,12 @@ public class SaleOrderDetail implements Serializable {
 		this.saleOrder = saleOrder;
 	}
 
-	public Bag getBag() {
-		return bag;
+	public Lap getLap() {
+		return lap;
 	}
 
-	public void setBag(Bag bag) {
-		this.bag = bag;
+	public void setLap(Lap lap) {
+		this.lap = lap;
 	}
 
 	public int getOrderQty() {
@@ -89,7 +89,7 @@ public class SaleOrderDetail implements Serializable {
 
 	@Override
 	public String toString() {
-		return "SaleOrderDetail [saleOrder=" + saleOrder + ", bag=" + bag + ", orderQty=" + orderQty + ", unitPrice="
+		return "SaleOrderDetail [saleOrder=" + saleOrder + ", lap=" + lap + ", orderQty=" + orderQty + ", unitPrice="
 				+ unitPrice + ", lineTotal=" + lineTotal + "]";
 	}
 }

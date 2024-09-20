@@ -9,11 +9,11 @@
     var btnDelete = document.querySelectorAll('.item-deleteBtn');
     btnPlus.forEach(function (btn) {
         btn.addEventListener('click', function (e) {
-            var bagId = btn.parentElement.parentElement.parentElement.firstElementChild;
+            var lapId = btn.parentElement.parentElement.parentElement.firstElementChild;
             var userId = btn.parentElement.parentElement.parentElement.firstElementChild.nextElementSibling;
             var orderQuantity = btn.previousElementSibling;
             var quantity = parseInt(orderQuantity.innerText) + 1;
-            fetch("http://localhost:8080/api_cart/update?bagID=".concat(bagId.value, "&userID=").concat(userId.value, "&quantity=").concat(quantity), {
+            fetch("http://localhost:8080/api_cart/update?lapID=".concat(lapId.value, "&userID=").concat(userId.value, "&quantity=").concat(quantity), {
                 method: 'PUT'
             })
                 .then(function (resp) { return resp.text(); })
@@ -25,14 +25,14 @@
     });
     btnMinus.forEach(function (btn) {
         btn.addEventListener('click', function (e) {
-            var bagId = btn.parentElement.parentElement.parentElement.firstElementChild;
+            var lapId = btn.parentElement.parentElement.parentElement.firstElementChild;
             var userId = btn.parentElement.parentElement.parentElement.firstElementChild.nextElementSibling;
             var orderQuantity = btn.nextElementSibling;
             var quantity = parseInt(orderQuantity.innerText);
             if (quantity === 1)
                 return;
             quantity -= 1;
-            fetch("http://localhost:8080/api_cart/update?bagID=".concat(bagId.value, "&userID=").concat(userId.value, "&quantity=").concat(quantity), {
+            fetch("http://localhost:8080/api_cart/update?lapID=".concat(lapId.value, "&userID=").concat(userId.value, "&quantity=").concat(quantity), {
                 method: 'PUT'
             })
                 .then(function (resp) { return resp.text(); })
@@ -44,9 +44,9 @@
     });
     btnDelete.forEach(function (btn) {
         btn.addEventListener('click', function (e) {
-            var bagId = btn.parentElement.parentElement.firstElementChild;
+            var lapId = btn.parentElement.parentElement.firstElementChild;
             var userId = btn.parentElement.parentElement.firstElementChild.nextElementSibling;
-            fetch("http://localhost:8080/api_cart/delete?bagID=".concat(bagId.value, "&userID=").concat(userId.value), {
+            fetch("http://localhost:8080/api_cart/delete?lapID=".concat(lapId.value, "&userID=").concat(userId.value), {
                 method: 'DELETE'
             })
                 .then(function (resp) { return resp.text(); })

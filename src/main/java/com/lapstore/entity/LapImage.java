@@ -1,4 +1,4 @@
-package com.g16.handbagstore.entity;
+package com.lapstore.entity;
 
 import java.io.Serializable;
 
@@ -12,53 +12,53 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "bag_images")
-public class BagImage implements Serializable {
+@Table(name = "lap_images")
+public class LapImage implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "bag_image_id")
-	private int bagImageId;
+	@Column(name = "lap_image_id")
+	private int lapImageId;
 	@ManyToOne
-	@JoinColumn(name = "bag_id", nullable = false)
-	private Bag bag;
+	@JoinColumn(name = "lap_id", nullable = false)
+	private Lap lap;
 	@Column(name = "image", columnDefinition = "text", nullable = false)
 	private String image;
 
-	public BagImage(int bagImageId, Bag bag, String image) {
+	public LapImage(int lapImageId, Lap lap, String image) {
 		super();
-		this.bagImageId = bagImageId;
-		this.bag = bag;
+		this.lapImageId = lapImageId;
+		this.lap = lap;
 		this.image = image;
 	}
 
-	public BagImage(Bag bag, String image) {
+	public LapImage(Lap lap, String image) {
 		super();
-		this.bag = bag;
+		this.lap = lap;
 		this.image = image;
 	}
 
-	public BagImage() {
+	public LapImage() {
 		super();
 	}
 
-	public int getBagImageId() {
-		return bagImageId;
+	public int getLapImageId() {
+		return lapImageId;
 	}
 
-	public void setBagImageId(int bagImageId) {
-		this.bagImageId = bagImageId;
+	public void setLapImageId(int lapImageId) {
+		this.lapImageId = lapImageId;
 	}
 
-	public Bag getBag() {
-		return bag;
+	public Lap getLap() {
+		return lap;
 	}
 
-	public void setBag(Bag bag) {
-		this.bag = bag;
+	public void setLap(Lap lap) {
+		this.lap = lap;
 	}
 
 	public String getImage() {
@@ -71,6 +71,6 @@ public class BagImage implements Serializable {
 
 	@Override
 	public String toString() {
-		return "BagImage [bag=" + bag + ", image=" + image + "]";
+		return "LapImage [lap=" + lap + ", image=" + image + "]";
 	}
 }

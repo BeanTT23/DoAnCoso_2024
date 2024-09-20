@@ -1,10 +1,10 @@
-package com.g16.handbagstore.service.impl;
+package com.lapstore.service.impl;
 
 import java.util.List;
 
-import com.g16.handbagstore.entity.CartDetail;
-import com.g16.handbagstore.repository.CartDetailRepository;
-import com.g16.handbagstore.service.CartDetailService;
+import com.lapstore.entity.CartDetail;
+import com.lapstore.repository.CartDetailRepository;
+import com.lapstore.service.CartDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,13 +25,13 @@ public class CartDetailServiceImpl implements CartDetailService {
 	}
 
 	@Override
-	public List<CartDetail> getCartDetailsByBagID(int bagID) {
-		return cartDetailRepository.getCartDetailsByBagID(bagID);
+	public List<CartDetail> getCartDetailsByLapID(int lapID) {
+		return cartDetailRepository.getCartDetailsByLapID(lapID);
 	}
 
 	@Override
-	public CartDetail getCartDetailByCartHeaderIdAndBagId(int cartID, int bagID) {
-		return cartDetailRepository.getCartDetailByCartHeaderIdAndBagId(cartID, bagID);
+	public CartDetail getCartDetailByCartHeaderIdAndLapId(int cartID, int lapID) {
+		return cartDetailRepository.getCartDetailByCartHeaderIdAndLapId(cartID, lapID);
 	}
 
 	@Override
@@ -45,7 +45,7 @@ public class CartDetailServiceImpl implements CartDetailService {
 	}
 
 	@Override
-	public void deleteCartDetailByCartHeaderIdAndBagId(int cartID, int bagID) {
-		cartDetailRepository.deleteCartDetailByCartHeaderIdAndBagId(cartID, bagID);
+	public void deleteCartDetailByCartHeaderIdAndLapId(int cartID, int lapID) {
+		cartDetailRepository.deleteCartDetailByCartHeaderIdAndLapId(cartID, lapID);
 	}
 }

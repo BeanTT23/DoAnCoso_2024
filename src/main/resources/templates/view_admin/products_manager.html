@@ -21,7 +21,7 @@
         <img th:src="@{/imgs/logo.png}"  class="w-full h-full object-cover rounded-full">
       </figure>
       <span class="font-bold text-lg">
-                    TUIS G16
+                    LAP G16
                 </span>
     </div>
     <div class="w-full flex flex-col justify-start items-center">
@@ -70,7 +70,7 @@
             <p class="text-slate-900">
               Tổng số danh mục
             </p>
-            <p class="text-xl font-medium" th:text="${bagCateTotalCate}">
+            <p class="text-xl font-medium" th:text="${lapCateTotalCate}">
             </p>
           </div>
         </div>
@@ -86,7 +86,7 @@
             <p class="text-slate-900">
               Tổng số sản phẩm
             </p>
-            <p class="text-xl font-medium" th:text="${bagCateTotal}">
+            <p class="text-xl font-medium" th:text="${lapCateTotal}">
             </p>
           </div>
         </div>
@@ -102,7 +102,7 @@
             <p class="text-slate-900">
               Sản phẩm còn hàng
             </p>
-            <p class="text-xl font-medium" th:text="${bagCateInStock}">
+            <p class="text-xl font-medium" th:text="${lapCateInStock}">
             </p>
           </div>
         </div>
@@ -118,7 +118,7 @@
             <p class="text-slate-900">
               Sản phẩm hết hàng
             </p>
-            <p class="text-xl font-medium" th:text="${bagCateOutOfStock}">
+            <p class="text-xl font-medium" th:text="${lapCateOutOfStock}">
             </p>
           </div>
         </div>
@@ -166,7 +166,7 @@
                 Xem
               </a>
             </td>
-            <td th:text="${product.bagCategoryId}"></td>
+            <td th:text="${product.lapCategoryId}"></td>
             <td class="py-3" th:text="${product.name}"></td>
             <td th:text="${#temporals.format(product.importDate, 'dd-MM-yyyy')}">12-02-2021</td>
             <td th:text="${product.size}"></td>

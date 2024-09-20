@@ -17,7 +17,7 @@
                 <img th:src="@{/imgs/logo.png}"  class="w-full h-full object-cover rounded-full">
             </figure>
             <span class="font-bold text-lg">
-                    TUIS G16
+                    LAP G16
                 </span>
         </div>
         <div class="w-full flex flex-col justify-start items-center">
@@ -108,8 +108,8 @@
                         </tr>
                         <th:block th:each="detail: ${listOrderDetails}">
                         <tr class="text-center">
-                            <td class="w-2/12 font-medium" th:text="${detail.bag.bagId}"></td>
-                            <td class="w-4/12 py-3" th:text="${detail.bag.bagCategory.name}"></td>
+                            <td class="w-2/12 font-medium" th:text="${detail.lap.lapId}"></td>
+                            <td class="w-4/12 py-3" th:text="${detail.lap.lapCategory.name}"></td>
                             <td class="w-2/12">
                                 <span th:text="${detail.unitPrice}"></span>
                                 <span>&#8363</span>

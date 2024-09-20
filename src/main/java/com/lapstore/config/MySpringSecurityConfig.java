@@ -1,4 +1,4 @@
-package com.g16.handbagstore.config;
+package com.lapstore.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

@@ -1,4 +1,4 @@
-package com.g16.handbagstore;
+package com.lapstore;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

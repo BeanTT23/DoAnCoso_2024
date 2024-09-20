@@ -228,7 +228,7 @@
   <div class="products__list w-full">
     <div class="products__list-container w-full py-3 flex flex-row justify-start items-start flex-wrap">
       <th:block th:each="product,iter: ${listProducts}">
-          <a th:href="@{/products/product/{categoryId}(categoryId=${product.bagCategoryId})}" class="products-links"
+          <a th:href="@{/products/product/{categoryId}(categoryId=${product.lapCategoryId})}" class="products-links"
           th:title="${product.name}">
               <div class="products-links-container">
                   <div class="products-image-container">

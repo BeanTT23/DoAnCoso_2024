@@ -4,9 +4,9 @@ import java.util.List;
 
 import com.lapstore.entity.LapImage;
 
-public interface BagImageService {
-	List<LapImage> getAllBagImages();
-	List<LapImage> getBagImagesByBagID(int bagID);
-	LapImage getBagImageByID(int bagImageID);
-	void addOrUpdateBagImage(LapImage bagImage);
+public interface LapImageService {
+	List<LapImage> getAllLapImages();
+	List<LapImage> getLapImagesByLapID(int lapID);
+	LapImage getLapImageByID(int lapImageID);
+	void addOrUpdateLapImage(LapImage lapImage);
 }

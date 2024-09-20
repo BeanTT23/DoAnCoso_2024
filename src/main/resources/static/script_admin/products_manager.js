@@ -104,15 +104,15 @@
             searchOrderSuggesstionContainer.innerHTML = '';
             return;
         }
-        fetch("http://localhost:8080/api/bags/search/keyword?keyword=".concat(keyword))
+        fetch("http://localhost:8080/api/laps/search/keyword?keyword=".concat(keyword))
             .then(function (response) { return response.json(); })["catch"](function (e) { return console.log(e.get); })
             .then(function (data) {
             if (data) {
                 searchOrderSuggesstionContainer.classList.add('active');
                 for (var i = 0; i < data.length; ++i) {
-                    var bagCate = JSON.parse(data[i]);
+                    var lapCate = JSON.parse(data[i]);
                     searchOrderSuggesstionContainer.innerHTML +=
-                        "<a href=\"\" class=\"product-search-suggesstion\">\n                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" style=\"fill: rgba(0, 0, 0, 1);\"\n                                class=\"\">\n                                    <path d=\"M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z\"></path>\n                                </svg>\n                                <span class=\"search-product-cateId\">".concat(bagCate['bagCateID'], "</span>\n                                <div class=\"search-product-other\">\n                                    <span class=\"search-product-name\">").concat(bagCate['name'], "</span>\n                                    <span class=\"search-product-brand\">").concat(bagCate['brand'], "</span>\n                                </div>\n</div>\n\t\t\t\t\t\t    </a>");
+                        "<a href=\"\" class=\"product-search-suggesstion\">\n                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" style=\"fill: rgba(0, 0, 0, 1);\"\n                                class=\"\">\n                                    <path d=\"M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z\"></path>\n                                </svg>\n                                <span class=\"search-product-cateId\">".concat(lapCate['lapCateID'], "</span>\n                                <div class=\"search-product-other\">\n                                    <span class=\"search-product-name\">").concat(lapCate['name'], "</span>\n                                    <span class=\"search-product-brand\">").concat(lapCate['brand'], "</span>\n                                </div>\n</div>\n\t\t\t\t\t\t    </a>");
                 }
             }
         });

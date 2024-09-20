@@ -1,13 +1,12 @@
-package com.g16.handbagstore.service.impl;
+package com.lapstore.service.impl;
 
 import java.util.List;
 
-import com.g16.handbagstore.entity.SaleOrderDetail;
-import com.g16.handbagstore.service.SaleOrderDetailService;
+import com.lapstore.entity.SaleOrderDetail;
+import com.lapstore.service.SaleOrderDetailService;
+import com.lapstore.repository.SaleOrderDetailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.g16.handbagstore.repository.SaleOrderDetailRepository;
 
 @Service
 public class SaleOrderDetailServiceImpl implements SaleOrderDetailService {
@@ -26,13 +25,13 @@ public class SaleOrderDetailServiceImpl implements SaleOrderDetailService {
 	}
 
 	@Override
-	public List<SaleOrderDetail> getSaleOrderDetailsByBagID(int bagID) {
-		return saleOrderDetailRepo.getSaleOrderDetailsByBagID(bagID);
+	public List<SaleOrderDetail> getSaleOrderDetailsByLapID(int lapID) {
+		return saleOrderDetailRepo.getSaleOrderDetailsByLapID(lapID);
 	}
 
 	@Override
-	public SaleOrderDetail getSaleOrderDetailBySaleOrderIdAndBagId(int saleOrderID, int bagID) {
-		return saleOrderDetailRepo.getSaleOrderDetailBySaleOrderIdAndBagId(saleOrderID, bagID);
+	public SaleOrderDetail getSaleOrderDetailBySaleOrderIdAndLapId(int saleOrderID, int lapID) {
+		return saleOrderDetailRepo.getSaleOrderDetailBySaleOrderIdAndLapId(saleOrderID, lapID);
 	}
 
 	@Override

@@ -26,11 +26,11 @@ function renderAllDevInfoToHtml(devArr) {
 }
 ;
 (function () {
-    var dev1 = new Developer('../imgs/aboutus_demo_cover_photo.jpg', true, 'Nguyễn Dương Minh Huy', '19481471', 'DHKTMPM15A', 'minhhuy123nguyen@gmail.com', 'https://github.com/s1mple-n');
-    var dev2 = new Developer('../imgs/aboutus_demo_cover_photo.jpg', false, 'Hoàng Thị Tố Thùy', '19432541', 'DHKTMPM15A', 'hoangtothuy01@gmail.com', 'https://github.com/ThuyHoang-01');
-    var dev3 = new Developer('../imgs/aboutus_demo_cover_photo.jpg', false, 'Nguyễn Văn Phát', '19483821', 'DHKTMPM15A', 'nguyenvanphat911@gmail.com', 'https://github.com/Phatjiro');
-    var dev4 = new Developer('../imgs/aboutus_demo_cover_photo.jpg', false, 'Cao A Minh', '19533901', 'DHKTMPM15A', 'caoaminh12an1nh2019@gmail.com', 'https://github.com/CaoAMinh');
-    var devArr = new Array(dev1, dev2, dev3, dev4);
+    var dev1 = new Developer('../imgs/aboutus_demo_cover_photo.jpg', true, 'Trần Võ Anh Quốc', '2200008483', '22DKTPM1B', 'anhquoctt23@gmail.com', 'https://github.com/BeanTT23');
+    var dev2 = new Developer('../imgs/aboutus_demo_cover_photo.jpg', false, 'Trần Võ Anh Quốc', '2200008483', '22DKTPM1B', 'anhquoctt23@gmail.com', 'https://github.com/BeanTT23');
+    var dev3 = new Developer('../imgs/aboutus_demo_cover_photo.jpg', false, 'Trần Võ Anh Quốc', '2200008483', '22DKTPM1B', 'anhquoctt23@gmail.com', 'https://github.com/BeanTT23');
+
+    var devArr = new Array(dev1, dev2, dev3);
     var mainWrapper = document.querySelector('.main__wrapper');
     mainWrapper.innerHTML = renderAllDevInfoToHtml(devArr);
 })();

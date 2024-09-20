@@ -1,10 +1,10 @@
-package com.g16.handbagstore.ultility;
+package com.lapstore.ultility;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.g16.handbagstore.entity.SaleOrder;
-import com.g16.handbagstore.entity.User;
+import com.lapstore.entity.SaleOrder;
+import com.lapstore.entity.User;
 
 public class MyUltility {
 	
